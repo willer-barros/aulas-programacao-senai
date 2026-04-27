@@ -1,30 +1,7 @@
-// 1. Variáveis e Dados (Array de Objetos)
-const logsDeAcesso = [
-  { usuario: "admin", status: "sucesso" },
-  { usuario: "willer_barros_senai", status: "erro" },
-  { usuario: "arthur_basilio_senai", status: "erro" },
-  { usuario: "neymar junior", status: "erro" },
-  { usuario: "kallany_gretchen_senai", status: "sucesso" }
-];
+// Calculadora Simples
+// Crie um script que receba dois números 
+// (podem ser variáveis fixas por enquanto) e exiba a soma, subtração, multiplicação e divisão entre eles.
 
-let totalErros = 0;
+let numero_1 = 10
+let numero_2 = 10
 
-console.log("--- Iniciando Análise de Logs ---");
-
-for (const log of logsDeAcesso) {
-  if (log.status === "erro") {
-    console.log(`ALERTA: Falha de acesso detectada para o usuário: ${log.usuario}`);
-    totalErros = totalErros + 1;
-  } else {
-    console.log(`Acesso normal: ${log.usuario}`);
-  }
-}
-
-console.log("---------------------------------");
-console.log(`Total de falhas encontradas: ${totalErros}`);
-
-if (totalErros > 2) {
-  console.log("STATUS DO SISTEMA: Bloqueio preventivo ativado! (Muitas falhas)");
-} else {
-  console.log("STATUS DO SISTEMA: Operando normalmente.");
-}
