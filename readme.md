@@ -23,5 +23,8 @@ Este repositório é dedicado ao armazenamento de atividades de lógica de progr
 ## 🛠️ Como rodar o projeto localmente
 
 1. **Clone o repositório:**
-   ```bash
-   git clone [https://github.com/willer-barros/SA-WILLER.git](https://github.com/willer-barros/SA-WILLER.git)
+   windows
+   clonar usando HTTPS: git clone https://github.com/willer-barros/aulas-programacao-senai.git
+
+    Linux
+   clonar usando SSH: git clone https://github.com/willer-barros/aulas-programacao-senai.git
