@@ -1,0 +1,1 @@
+// toda vez que voce resolver um exercicio, coloque resolucao_seu_nome.js na pasta da sua turma
