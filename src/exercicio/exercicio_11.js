@@ -3,3 +3,15 @@
 
 // Cria um array vazio para representar a fila
 const clinica = [];
+
+// Adicionando animais à fila
+clinica.push("Cachorro");
+clinica.push("Gato");
+clinica.push("Pássaro");
+
+console.log("Fila inicial:", clinica);
+
+// Atendendo o primeiro animal
+const atendido = clinica.shift();
+console.log("Animal atendido:", atendido);
+console.log("Fila após atendimento:", clinica);
