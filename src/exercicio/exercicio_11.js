@@ -3,3 +3,16 @@
 
 // Cria um array vazio para representar a fila
 const clinica = [];
+
+clinica.push("Rex");
+clinica.push("Mingau");
+clinica.push("Luna");
+
+console.log("Fila inicial de atendimento:", clinica);
+
+while (clinica.length > 0) {
+  const atendido = clinica.shift();
+  console.log(`Atendendo: ${atendido}`);
+}
+
+console.log("Todos os animais já foram atendidos.");
