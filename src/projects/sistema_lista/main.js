@@ -1,30 +1,40 @@
-const express = require("express")
-const cors = require("cors")
+const express = require("express");
+const cors = require("cors");
 
-const app = express()
-app.use(express.json())
-app.use(cors()) //comunicacao eficiente entre front e back
-const PORT = 3000
+const servidor = express();
+const PORTA = 3000;
 
-let alunos= [] //simular um db
+servidor.use(express.json());
+servidor.use(cors());
 
-//rota para pegar
-app.get('/alunos', (req, res) => {
-    res.json(alunos);
-})
+let listaAlunos = [];
 
-//rota para cadastrar novos alunos
-app.post('/alunos', (req, res) =>{
-    const { nome } = req.body;
-    if(!nome){
-        return res.status(400).json({ error: "Nome é Obrigatorio"})
+servidor.get("/alunos", (requisicao, resposta) => {
+    resposta.status(200).json(listaAlunos);
+});
+
+servidor.post("/alunos", (requisicao, resposta) => {
+    const nomeAluno = requisicao.body.nome;
+
+    if (!nomeAluno) {
+        return resposta.status(400).json({
+            mensagem: "O campo nome precisa ser preenchido."
+        });
     }
-    
-    const novoAluno = {id: Date.now(), nome}
-    alunos.push(novoAluno); // salvando no array(banco de dados)
-    
-    res.status(201).json(novoAluno)
-})
 
-app.listen(PORT, () => console.log(`Servidor rodando na porta: ${PORT}`))
-    
+    const alunoCriado = {
+        id: Date.now(),
+        nome: nomeAluno
+    };
+
+    listaAlunos.push(alunoCriado);
+
+    resposta.status(201).json({
+        mensagem: "Aluno cadastrado com sucesso!",
+        aluno: alunoCriado
+    });
+});
+
+servidor.listen(PORTA, () => {
+    console.log(`API funcionando em http://localhost:${PORTA}`);
+});

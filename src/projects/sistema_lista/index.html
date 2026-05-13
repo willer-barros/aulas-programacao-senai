@@ -1,19 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Lista</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caderno de Chamada</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Iniciei Projeto </h1>
-    <div class="container">
-        <input type="text" id="nomeAluno" placeholder="Nome do Aluno">
-        <button id="btn-enviar">Enviar</button>
-        <ul id="lista"></ul>
+
+  <div class="topo">
+    <h1>Caderno de Chamada</h1>
+
+    <div class="stats">
+      <div class="stat-box">
+        <span class="stat-num" id="s-total">0</span>
+        <span class="stat-label">alunos</span>
+      </div>
+
+      <div class="stat-box">
+        <span class="stat-num verde" id="s-pres">0</span>
+        <span class="stat-label">presentes</span>
+      </div>
+
+      <div class="stat-box">
+        <span class="stat-num vermelho" id="s-aus">0</span>
+        <span class="stat-label">ausentes</span>
+      </div>
     </div>
-    
-    <script src="script.js"></script>
+  </div>
+
+  <div class="controles">
+    <div class="input-row">
+      <input type="text" id="inputNome" placeholder="Nome do aluno">
+      <button id="btn-adicionar">Adicionar</button>
+    </div>
+
+    <input type="text" id="busca" placeholder="Buscar aluno">
+
+    <p id="erro"></p>
+  </div>
+
+  <ul id="lista"></ul>
+
+  <div id="vazio" class="vazio">
+    <p>Nenhum aluno cadastrado.</p>
+  </div>
+
+  <div id="rodape" class="rodape oculto">
+    <button id="btn-limpar" class="btn-danger">Limpar turma</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
