@@ -26,5 +26,28 @@ app.post('/alunos', (req, res) =>{
     res.status(201).json(novoAluno)
 })
 
+app.put('/alunos/:id', (req, res) => {
+    const { id } = req.params
+    const{ nome } = req.body
+    
+    const aluno = alunos.find(a => a.id == id)
+
+    if(!aluno){
+         return res.status(400).json({ error: "Aluno não encontrado"})
+    }
+    aluno.nome = nome
+    res.json(aluno)
+    })
+
+    app.delete('/alunos/:id', (req, res) => {
+        const { id } = req.params
+        
+        alunos = alunos.filter(a => a.id != id)
+
+        res.json({
+            mensagem:"Aluno removido"
+        })
+    })
+
 app.listen(PORT, () => console.log(`Servidor rodando na porta: ${PORT}`))
     
