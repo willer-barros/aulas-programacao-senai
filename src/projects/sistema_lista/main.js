@@ -25,6 +25,11 @@ app.post('/alunos', (req, res) =>{
     
     res.status(201).json(novoAluno)
 })
+app.delete('/alunos/:id', (req, res) => {
+  const { id } = req.params;
+  alunos = alunos.filter(a => a.id != id);
+  res.status(204).send();
+});
 
 app.listen(PORT, () => console.log(`Servidor rodando na porta: ${PORT}`))
-    
+
