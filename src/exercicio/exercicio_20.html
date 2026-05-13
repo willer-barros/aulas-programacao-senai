@@ -6,11 +6,53 @@
     <title>Exercicio 20</title>
 </head>
 <body>
+<div class="card">
+    <h2>Plano Básico</h2>
     <ul>
-    <li><strong>Objetivo:</strong> Criar três colunas comparativas de planos.</li>
-    <li><strong>HTML:</strong> Três divs principais (cards), cada uma com o nome do plano, uma lista (ul) de benefícios e o valor.</li>
-    <li><strong>CSS:</strong> Usar display: grid com três colunas de tamanhos iguais. Adicionar um destaque (como uma cor de borda diferente) apenas no card central.</li>
-    <li><strong>Conceito chave:</strong> Grid-template-columns, gap e seletores específicos de grid.</li>
-</ul>
+        <li>Benefício 1</li>
+        <li>Benefício 2</li>
+        <li>Benefício 3</li>
+    </ul>
+    <p>R$ 29,99/mês</p>
+</div>
+<div class="card destaque">
+    <h2>Plano Intermediário</h2>
+    <ul>
+        <li>Benefício 1</li>
+        <li>Benefício 2</li>
+        <li>Benefício 3</li>
+    </ul>
+    <p>R$ 49,99/mês</p>
+</div>
+<div class="card">
+    <h2>Plano Premium</h2>
+    <ul>
+        <li>Benefício 1</li>
+        <li>Benefício 2</li>
+        <li>Benefício 3</li>
+    </ul>
+    <p>R$ 79,99/mês</p>
+</div>
+<style>
+body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+.card {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+.destaque {
+    border-color: #007BFF;
+    background-color: #e7f3ff;
+}
+</style>
 </body>
 </html>

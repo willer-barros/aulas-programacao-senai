@@ -12,6 +12,36 @@
         <li><strong>CSS:</strong> Usar display: flex no container, permitir que as fotos quebrem de linha (flex-wrap) e adicionar um espaçamento (gap) entre elas.</li>
         <li><strong>Conceito chave:</strong> Flex-direction, flex-wrap e alinhamento de itens.</li>
     </ul>
-   
+   <section>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+   </section>
 </body>
 </html>
+<style>
+section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+div {    width: 100px;
+    height: 100px;
+    background-color: lightcoral;
+}
+div:nth-child(2) {
+    background-color: lightblue;
+}
+div:nth-child(3) {
+    background-color: lightgreen;
+}
+div:nth-child(4) {
+    background-color: lightgoldenrodyellow;
+}
+div:nth-child(5) {
+    background-color: lightpink;
+}
+</style>
