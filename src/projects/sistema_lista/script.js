@@ -24,5 +24,30 @@ async function atualizarLista() {
   lista.innerHTML = dados.map(a => `<li>${a.nome}</li>`).join('');
 }
 
+async function deletarItem(id) {
+  const resposta = await fetch(`http://localhost:3000/alunos/${id}`, {
+    method: 'DELETE'
+  });
+
+  if (resposta.ok) {
+    atualizarLista();
+  }
+}
+
+async function editarItem(id) {
+  const novoNome = prompt("Digite o novo nome:");
+
+  const resposta = await fetch(`http://localhost:3000/alunos/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ nome: novoNome })
+  });
+
+  if (resposta.ok) {
+    atualizarLista();
+  }
+}
+
 // Carregar ao abrir a página
 atualizarLista();
+

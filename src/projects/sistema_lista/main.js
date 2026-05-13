@@ -26,5 +26,23 @@ app.post('/alunos', (req, res) =>{
     res.status(201).json(novoAluno)
 })
 
-app.listen(PORT, () => console.log(`Servidor rodando na porta: ${PORT}`))
+//rota para deletar um aluno
+app.delete('/alunos/:id', (req, res) => {
+    const { id } = req.params;
+    alunos = alunos.filter(a => a.id != id);
+    res.status(204).send();
+})
+
+//rota para atualizar um aluno
+app.put('/alunos/:id', (req, res) => {
+    const { id } = req.params;
+    const { nome } = req.body;
+    if(!nome){
+        return res.status(400).json({ error: "Nome é Obrigatorio"})
+    }
+    alunos = alunos.map(a => a.id == id ? { ...a, nome } : a);
+    res.json(alunos.find(a => a.id == id));
+})
+
+app.listen(PORT, () => console.log(`http://localhost:${PORT}`))
     
