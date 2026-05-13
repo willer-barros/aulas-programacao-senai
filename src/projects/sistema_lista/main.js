@@ -1,10 +1,13 @@
 const express = require("express")
 const cors = require("cors")
+const path = require("path")
 
 const app = express()
 app.use(express.json())
 app.use(cors()) //comunicacao eficiente entre front e back
 const PORT = 3000
+
+app.use(express.static(path.join(__dirname)))
 
 let alunos= [] //simular um db
 
@@ -26,5 +29,39 @@ app.post('/alunos', (req, res) =>{
     res.status(201).json(novoAluno)
 })
 
-app.listen(PORT, () => console.log(`Servidor rodando na porta: ${PORT}`))
+
     
+app.put('/alunos/:id', (req, res) => {
+    const { id } = req.params
+    const { nome } = req.body
+
+    const index = alunos.findIndex(a => a.id == id)
+    if (index === -1) {
+        return res.status(404).json({
+            error: "Aluno não encontrado"
+        })
+    }
+    if (!nome) {
+        return res.status(400).json({
+            error: "Nome é obrigatório"
+        })
+    }
+
+    alunos[index].nome = nome
+    res.json(alunos[index])
+})
+
+app.delete('/alunos/:id', (req, res) => {
+    const { id } = req.params
+    const antes = alunos.length
+    alunos = alunos.filter(a => a.id != id)
+
+    if (alunos.length === antes) {
+        return res.status(404).json({
+            error: "Aluno não encontrado"
+        })
+    }
+
+    res.status(204).send()
+})
+app.listen(PORT, () => console.log(`Servidor rodando na porta: ${PORT}`))

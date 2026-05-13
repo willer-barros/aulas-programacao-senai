@@ -2,8 +2,52 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    background-color: rgb(19, 19, 19);
+    color: white;
+    font-family: Helvetica;
+}
+
+h1 {    
+    text-align: center;
+    margin: 40px;
+    margin-bottom: 0px;
+}
+
+p {
+    text-align: center;
+    color: gray;
+    margin-bottom: 20px;
 }
 
 .container{
-    background-color: blueviolet;
+    background-color: rgb(142, 100, 182);
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    width: 50%;
+    border-radius: 5px;
+}
+
+input {
+    margin: 5px;
+    border: none;
+    padding: 13px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+button {
+    margin: 5px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    margin: 5px;
 }
