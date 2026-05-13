@@ -6,7 +6,7 @@ app.use(express.json())
 app.use(cors()) //comunicacao eficiente entre front e back
 const PORT = 3000
 
-let alunos= [] //simular um db
+let alunos = [] //simular um db
 
 //rota para pegar
 app.get('/alunos', (req, res) => {
@@ -14,17 +14,46 @@ app.get('/alunos', (req, res) => {
 })
 
 //rota para cadastrar novos alunos
-app.post('/alunos', (req, res) =>{
+app.post('/alunos', (req, res) => {
     const { nome } = req.body;
-    if(!nome){
-        return res.status(400).json({ error: "Nome é Obrigatorio"})
+    if (!nome) {
+        return res.status(400).json({ error: "Nome é Obrigatorio" })
     }
-    
-    const novoAluno = {id: Date.now(), nome}
+
+    const novoAluno = { id: Date.now(), nome }
     alunos.push(novoAluno); // salvando no array(banco de dados)
-    
+
     res.status(201).json(novoAluno)
 })
 
+
+app.put('/aluno/:id', (req, res) => {
+    const idAluno = parseInt(req.params.id);
+    const { nome } = req.body;
+    const index = alunos.findIndex(alunos => alunos.id === idAluno);
+
+    if(index === -1){
+        return res.status(404).json({error:"aluno não encotrado"});
+    }
+
+    alunos[index] = {id: idAluno, nome};
+    res.json(alunos[index])
+
+});
+
+
+app.delete('/alunos/:id', (req,res) => {
+    const idAluno = parseInt(req.params.id);
+    const index = alunos.findIndex(alunos => alunos.id === idAluno);
+
+    if(index === -1){
+        return res.status(404).json({error:"aluno não encotrado"})
+
+    }
+
+    alunos.splice(index, 1);
+    res.status(204).send();
+
+});
+
 app.listen(PORT, () => console.log(`Servidor rodando na porta: ${PORT}`))
-    
