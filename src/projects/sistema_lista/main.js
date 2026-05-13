@@ -30,6 +30,15 @@ app.delete('/alunos/:id', (req, res) => {
   alunos = alunos.filter(a => a.id != id);
   res.status(204).send();
 });
+app.put('/alunos/:id', (req, res) => {
+  const { id } = req.params;
+  const { nome } = req.body;
+  const aluno = alunos.find(a => a.id == id);
+  if (!aluno) {
+    return res.status(404).json({ error: "Aluno não encontrado" });
+  }
+  aluno.nome = nome;
+  res.json(aluno);
+});
 
 app.listen(PORT, () => console.log(`Servidor rodando na porta: ${PORT}`))
-
