@@ -3,11 +3,10 @@
 
 const num = 1442
 
-if (num % 2 ===  0) {
-    console.log("O numero " + num + " é par")
+if (num % 2 === 0) {
+    console.log("O número " + num + " é par")
 } else {
-    console.log("O numero " + num + " é impar")
+    console.log("O número " + num + " é ímpar")
 }
-
 
 
