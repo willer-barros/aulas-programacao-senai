@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 40px;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+
+.planos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.card li {
+    margin: 10px 0;
+}
+
+.destaque {
+    border: 3px solid #007bff;
+}
