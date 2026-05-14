@@ -22,14 +22,12 @@ app.post('/alunos', (req, res) =>{
     
     const novoAluno = {id: Date.now(), nome}
     alunos.push(novoAluno); // salvando no array(banco de dados)
-    
     res.status(201).json(novoAluno)
 })
 
 app.put('/alunos/:id', (req, res) => {
     const { id } = req.params
     const{ nome } = req.body
-    
     const aluno = alunos.find(a => a.id == id)
 
     if(!aluno){
@@ -41,12 +39,8 @@ app.put('/alunos/:id', (req, res) => {
 
     app.delete('/alunos/:id', (req, res) => {
         const { id } = req.params
-        
         alunos = alunos.filter(a => a.id != id)
-
-        res.json({
-            mensagem:"Aluno removido"
-        })
+        res.json({mensagem:"Aluno removido"})
     })
 
 app.listen(PORT, () => console.log(`Servidor rodando na porta: ${PORT}`))
