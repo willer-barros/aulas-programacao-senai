@@ -1,16 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercicio 20</title>
+    <title>Exercício 20</title>
+
+    <link rel="stylesheet" href="exercicio_20.css">
 </head>
+
 <body>
-    <ul>
-    <li><strong>Objetivo:</strong> Criar três colunas comparativas de planos.</li>
-    <li><strong>HTML:</strong> Três divs principais (cards), cada uma com o nome do plano, uma lista (ul) de benefícios e o valor.</li>
-    <li><strong>CSS:</strong> Usar display: grid com três colunas de tamanhos iguais. Adicionar um destaque (como uma cor de borda diferente) apenas no card central.</li>
-    <li><strong>Conceito chave:</strong> Grid-template-columns, gap e seletores específicos de grid.</li>
-</ul>
+
+    <section class="planos">
+
+        <div class="card">
+            <h2>Plano Básico</h2>
+
+            <ul>
+                <li>1 Usuário</li>
+                <li>5GB de armazenamento</li>
+                <li>Suporte básico</li>
+            </ul>
+
+            <h3>R$ 29,90</h3>
+        </div>
+
+        <div class="card destaque">
+            <h2>Plano Premium</h2>
+
+            <ul>
+                <li>5 Usuários</li>
+                <li>50GB de armazenamento</li>
+                <li>Suporte prioritário</li>
+            </ul>
+
+            <h3>R$ 79,90</h3>
+        </div>
+
+        <div class="card">
+            <h2>Plano Empresarial</h2>
+
+            <ul>
+                <li>Usuários ilimitados</li>
+                <li>200GB de armazenamento</li>
+                <li>Suporte 24h</li>
+            </ul>
+
+            <h3>R$ 149,90</h3>
+        </div>
+
+    </section>
+
 </body>
 </html>
