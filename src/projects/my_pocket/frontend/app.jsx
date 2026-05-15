@@ -10,7 +10,7 @@ function App() {
   // Estado para controlar se estamos editando um item existente
   const [idEmEdicao, setIdEmEdicao] = useState(null);
 
-  const API_URL = "http://localhost:3001/transacoes";
+  const API_URL = "http://localhost:3000/transacoes";
 
   // --- FUNÇÕES DE INTEGRAÇÃO (H5 e H6) ---
 

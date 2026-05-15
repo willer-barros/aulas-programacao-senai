@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Sistema de gerenciamento de biblioteca pessoal - cadastre, pesquise e organize seus livros favoritos."/>
+  <title>Sistema Biblioteca Pessoal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="brand-icon">📚</div>
+      <span class="brand-title">Sistema Biblioteca Pessoal</span>
+    </div>
+    <ul class="navbar-links">
+      <li><a href="#inicio" class="nav-link active">Início</a></li>
+      <li><a href="#livros" class="nav-link">Livros</a></li>
+      <li><a href="#favoritos" class="nav-link">Favoritos</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content" id="inicio">
+    <div class="grid-layout">
+
+      <!-- LEFT COLUMN -->
+      <div class="left-column">
+
+        <!-- CADASTRAR LIVRO -->
+        <section class="card" id="livros">
+          <h2 class="card-title">Cadastrar Livro</h2>
+
+          <div class="form-group">
+            <label for="titulo" class="form-label">Título:</label>
+            <input
+              type="text"
+              id="titulo"
+              class="form-input"
+              placeholder="Digite o título"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="autor" class="form-label">Autor:</label>
+            <input
+              type="text"
+              id="autor"
+              class="form-input"
+              placeholder="Digite o autor"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="categoria" class="form-label">Categoria:</label>
+            <select id="categoria" class="form-select">
+              <option value="programacao">Programação</option>
+              <option value="romance">Romance</option>
+              <option value="ficcao">Ficção Científica</option>
+              <option value="historia">História</option>
+              <option value="filosofia">Filosofia</option>
+              <option value="ciencias">Ciências</option>
+              <option value="arte">Arte</option>
+              <option value="outros">Outros</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="avaliacao" class="form-label">Avaliação:</label>
+            <input
+              type="range"
+              id="avaliacao"
+              class="form-range"
+              min="1"
+              max="5"
+              value="3" 
+            />
+            <span class="range-value" id="rangeDisplay">3</span>
+          </div>
+
+          <div class="form-group form-check">
+            <input type="checkbox" id="favorito" class="check-input" />
+            <label for="favorito" class="check-label">Favorito</label>
+          </div>
+
+          <button class="btn-adicionar" id="btnAdicionar">Adicionar</button>
+        </section>
+
+        <!-- PESQUISAR -->
+        <section class="card" id="pesquisa-section">
+          <h2 class="card-title">Pesquisar</h2>
+          <input
+            type="text"
+            id="pesquisa"
+            class="form-input search-input"
+            placeholder="Pesquisar livro"
+          />
+        </section>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="right-column">
+
+        <!-- ESTATÍSTICAS -->
+        <section class="card stats-card">
+          <h2 class="card-title">Estatísticas</h2>
+          <div class="stats-list">
+            <div class="stat-item">
+              <span class="stat-label">Total de livros:</span>
+              <span class="stat-value" id="total-livros">0</span>
+            </div>
+            <hr class="stat-divider" />
+            <div class="stat-item">
+              <span class="stat-label">Favoritos:</span>
+              <span class="stat-value" id="total-favoritos">0</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- LISTA DE LIVROS -->
+        <section class="card" id="favoritos">
+          <h2 class="card-title lista-title">Lista de Livros</h2>
+          <div class="livros-lista" id="livros-lista">
+            <p class="empty-msg">Nenhum livro cadastrado ainda.</p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Projeto para prática <span class="footer-highlight">DOM</span> + <span class="footer-highlight">HTML</span> + <span class="footer-highlight">CSS</span></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

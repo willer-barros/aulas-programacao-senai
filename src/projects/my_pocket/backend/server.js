@@ -1,6 +1,7 @@
-const express = require('express')
-const cors = require('cors')
-const app = express()
+const express = require('express');
+const cors = require('cors');
+const app = express();
+const PORT = 3000
 
 app.use(cors());
 app.use(express.json())
@@ -8,7 +9,7 @@ app.use(express.json())
 let transacoes = []; //aqui eu to simulando o banco de dados
 
 //esse endpoint e de leitura
-app.length('/transacoes', (req, res) =>{
+app.get('/transacoes', (req, res) =>{
     res.json(transacoes);
 })
 
@@ -48,3 +49,5 @@ app.delete('/transacoes/:id', (req, res) =>{
     transacoes = transacoes.filter(t => t.id !=id);
     res.status(204).send();
 })
+
+app.listen(PORT, () => console.log(`Servidor rodando na porta: ${PORT}`))
