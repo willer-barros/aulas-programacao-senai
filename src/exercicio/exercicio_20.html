@@ -1,16 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercicio 20</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercicio 20</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 40px;
+      background-color: #f4f4f4;
+    }
+
+    .planos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: white;
+      padding: 24px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .card:nth-child(2) {
+      border-color: #0077ff;
+    }
+
+    .card h2 {
+      margin-top: 0;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    .card li {
+      margin-bottom: 10px;
+    }
+
+    .preco {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #0077ff;
+    }
+
+    @media (max-width: 700px) {
+      .planos {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <ul>
-    <li><strong>Objetivo:</strong> Criar três colunas comparativas de planos.</li>
-    <li><strong>HTML:</strong> Três divs principais (cards), cada uma com o nome do plano, uma lista (ul) de benefícios e o valor.</li>
-    <li><strong>CSS:</strong> Usar display: grid com três colunas de tamanhos iguais. Adicionar um destaque (como uma cor de borda diferente) apenas no card central.</li>
-    <li><strong>Conceito chave:</strong> Grid-template-columns, gap e seletores específicos de grid.</li>
-</ul>
+  <section class="planos">
+    <div class="card">
+      <h2>Básico</h2>
+      <ul>
+        <li>1 usuário</li>
+        <li>5 GB de armazenamento</li>
+        <li>Suporte por e-mail</li>
+      </ul>
+      <p class="preco">R$ 29,90</p>
+    </div>
+
+    <div class="card">
+      <h2>Pro</h2>
+      <ul>
+        <li>5 usuários</li>
+        <li>50 GB de armazenamento</li>
+        <li>Suporte prioritário</li>
+      </ul>
+      <p class="preco">R$ 59,90</p>
+    </div>
+
+    <div class="card">
+      <h2>Premium</h2>
+      <ul>
+        <li>Usuários ilimitados</li>
+        <li>200 GB de armazenamento</li>
+        <li>Suporte 24h</li>
+      </ul>
+      <p class="preco">R$ 99,90</p>
+    </div>
+  </section>
 </body>
 </html>

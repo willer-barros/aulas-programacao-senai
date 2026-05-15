@@ -1,4 +1,3 @@
-// 1. Variáveis e Dados (Array de Objetos)
 const logsDeAcesso = [
   { usuario: "admin", status: "sucesso" },
   { usuario: "willer_barros_senai", status: "erro" },

@@ -1,16 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercicio 19</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercicio 19</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+      padding: 40px;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 24px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 16px;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      outline: none;
+      font-size: 1rem;
+      box-sizing: border-box;
+      transition: border-color 0.3s;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-bottom-color: #0077ff;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background-color: #0077ff;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #005fcc;
+    }
+  </style>
 </head>
 <body>
-    <ul>
-    <li><strong>Objetivo:</strong> Estilizar um formulário de mensagens.</li>
-    <li><strong>HTML:</strong> Um formulário com inputs para Nome, E-mail e uma tag textarea para a mensagem, finalizando com um botão.</li>
-    <li><strong>CSS:</strong> Remover as bordas padrão dos inputs, adicionar uma borda colorida apenas ao clicar (focus) e mudar a cor do botão ao passar o mouse (hover).</li>
-    <li><strong>Conceito chave:</strong> Pseudo-classes (:hover, :focus), estilização de inputs e transições suaves.</li>
-</ul>
+  <form>
+    <label for="nome">Nome</label>
+    <input type="text" id="nome" placeholder="Digite seu nome">
+
+    <label for="email">E-mail</label>
+    <input type="email" id="email" placeholder="Digite seu e-mail">
+
+    <label for="mensagem">Mensagem</label>
+    <textarea id="mensagem" placeholder="Digite sua mensagem"></textarea>
+
+    <button type="submit">Enviar</button>
+  </form>
 </body>
 </html>

@@ -1,1 +1,11 @@
-// Dado um array de objetos de "produtos" (nome e preço), use o método .filter() para exibir apenas os produtos que custam mais de R$ 50,00.
+const produtos = [
+  { nome: "Caderno", preco: 25 },
+  { nome: "Mochila", preco: 120 },
+  { nome: "Caneta", preco: 5 },
+  { nome: "Fone de ouvido", preco: 80 },
+  { nome: "Estojo", preco: 35 }
+];
+
+const produtosCaros = produtos.filter((produto) => produto.preco > 50);
+
+console.log(produtosCaros);

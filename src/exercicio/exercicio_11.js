@@ -1,5 +1,12 @@
-// 1. Adicionar e Remover Elementos com push() e shift()
-// Simule uma fila de atendimento em uma clínica veterinária, onde os animais são atendidos na ordem de chegada.
+const fila = [];
 
-// Cria um array vazio para representar a fila
-const clinica = [];
+fila.push("Rex");
+fila.push("Mimi");
+fila.push("Thor");
+
+console.log("Fila atual:", fila);
+
+const primeiroAtendido = fila.shift();
+
+console.log("Animal atendido:", primeiroAtendido);
+console.log("Fila apos atendimento:", fila);

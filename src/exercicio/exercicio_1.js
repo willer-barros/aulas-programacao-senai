@@ -1,12 +1,14 @@
-// Calculadora Simples
-// Crie um script que receba dois números 
-// (podem ser variáveis fixas por enquanto) e exiba a soma, subtração, multiplicação e divisão entre eles.
+const numero1 = 20;
+const numero2 = 5;
 
-let numero_1 = 10
-let numero_2 = 10
+const soma = numero1 + numero2;
+const subtracao = numero1 - numero2;
+const multiplicacao = numero1 * numero2;
+const divisao = numero1 / numero2;
 
-console.log("Soma: " + (numero_1 + numero_2))
-console.log("Subtração: " + (numero_1 - numero_2))
-console.log("Multiplicação: " + (numero_1 * numero_2))
-console.log("Divisão: " + (numero_1 / numero_2))
-
+console.log(`Numero 1: ${numero1}`);
+console.log(`Numero 2: ${numero2}`);
+console.log(`Soma: ${soma}`);
+console.log(`Subtracao: ${subtracao}`);
+console.log(`Multiplicacao: ${multiplicacao}`);
+console.log(`Divisao: ${divisao}`);
