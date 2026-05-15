@@ -32,7 +32,7 @@ async function atualizarLista() {
     const dados = await res.json();
     const lista = document.getElementById('lista');
     lista.innerHTML = dados.map(a => `
-        <li>${a.nome}<button onclick="atualisarNome(${a.id})">Editar</buttom>
+        <li>${a.nome}<button onclick="atualizarNome(${a.id})">Editar</button>
 
         <button onclick="excluirAluno(${a.id})">Excluir</button></li>
         `).join('');
@@ -46,16 +46,12 @@ async function atualizarNome(id) {
         await fetch(`http://localhost:3000/alunos/${id}`, {
         method: 'PUT',
         headers: {
-            'Content-type': 'Aplication/json'
+            'Content-Type': 'application/json'
         },
-        body:json.stringify({
+        body:JSON.stringify({
             nome: novoNome
         })
     });
 
     atualizarLista()
-}
-
-async function atualizarLista(){
-    const res = await fetch ('http://localhost:3000/alunos');
 }

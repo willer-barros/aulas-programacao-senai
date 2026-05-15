@@ -1,11 +1,12 @@
 const express = require("express")
 const cors = require("cors")
-
+const path = require("path")
 const app = express()
 app.use(express.json())
 app.use(cors()) //comunicacao eficiente entre front e back
 const PORT = 3000
 
+app.use(express.static(path.join(__dirname)))
 let alunos= [] //simular um db
 
 //rota para pegar
