@@ -25,6 +25,18 @@ app.post('/alunos', (req, res) =>{
     
     res.status(201).json(novoAluno)
 })
+
+app.put('/alunos/:id', (req, res) => {
+    const { id } = req.params;
+    const { nome } = req.body;
+    const index = alunos.findIndex(a => a.id == id);
+    if(index === -1){
+        return res.status(404).json({ error: "Aluno não encontrado" });
+    }
+    alunos[index].nome = nome;
+    res.json(alunos[index]);
+})
+
 app.delete('/alunos/:id', (req, res) => {
     const {id} = req.params;
     alunos = alunos.filter(a => a.id != id);
@@ -32,4 +44,3 @@ app.delete('/alunos/:id', (req, res) => {
 })
 
 app.listen(PORT, () => console.log(`Servidor rodando na porta: ${PORT}`))
-    
