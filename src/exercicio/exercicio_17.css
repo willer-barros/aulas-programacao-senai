@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.foto {
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+}
+
+.foto1 {
+    background-color: red;
+}
+
+.foto2 {
+    background-color: blue;
+}
+
+.foto3 {
+    background-color: green;
+}
+
+.foto4 {
+    background-color: orange;
+}
+
+.foto5 {
+    background-color: purple;
+}
