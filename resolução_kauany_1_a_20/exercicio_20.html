@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 20</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f3f6fa;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .planos {
+            width: 90%;
+            max-width: 900px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            text-align: center;
+        }
+
+        .card:nth-child(2) {
+            border-color: #2f80ed;
+            transform: scale(1.05);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #222;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .card li {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .preco {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2f80ed;
+        }
+
+        @media (max-width: 700px) {
+            .planos {
+                grid-template-columns: 1fr;
+            }
+
+            .card:nth-child(2) {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="planos">
+        <div class="card">
+            <h2>Básico</h2>
+            <ul>
+                <li>1 usuário</li>
+                <li>Suporte simples</li>
+                <li>5GB de espaço</li>
+            </ul>
+            <p class="preco">R$ 29,90</p>
+        </div>
+
+        <div class="card">
+            <h2>Pro</h2>
+            <ul>
+                <li>5 usuários</li>
+                <li>Suporte prioritário</li>
+                <li>50GB de espaço</li>
+            </ul>
+            <p class="preco">R$ 59,90</p>
+        </div>
+
+        <div class="card">
+            <h2>Premium</h2>
+            <ul>
+                <li>Usuários ilimitados</li>
+                <li>Suporte 24h</li>
+                <li>200GB de espaço</li>
+            </ul>
+            <p class="preco">R$ 99,90</p>
+        </div>
+    </section>
+
+</body>
+</html>
