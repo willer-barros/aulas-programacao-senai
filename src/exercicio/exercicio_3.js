@@ -2,3 +2,8 @@
 //para usar esse modulo, usamos o metodo require do node. ficando assim const fs = require("fs")
 
 
+const fs = require("fs")
+
+fs.writeFileSync("mensagem.txt", "Node.js é poderoso!")
+
+console.log("Arquivo criado com sucesso!")
