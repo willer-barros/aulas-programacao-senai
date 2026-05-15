@@ -9,8 +9,11 @@
 <body>
     <h1>Iniciei Projeto </h1>
     <div class="container">
-        <input type="text" id="nomeAluno" placeholder="Nome do Aluno">
-        <button id="btn-enviar">Enviar</button>
+        <!-- transformei em form para permitir Enter -->
+        <form id="form-nome" action="#" onsubmit="return false;">
+            <input type="text" id="nomeAluno" placeholder="Nome do Aluno" autocomplete="off">
+            <button id="btn-enviar" type="button">Enviar</button>
+        </form>
         <ul id="lista"></ul>
     </div>
     
