@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+const API_URL = "http://localhost:3000/transacoes";
+
 function App() {
   // Estados para a lista e para o formulário
   const [transacoes, setTransacoes] = useState([]);
@@ -10,7 +12,6 @@ function App() {
   // Estado para controlar se estamos editando um item existente
   const [idEmEdicao, setIdEmEdicao] = useState(null);
 
-  const API_URL = "http://localhost:3001/transacoes";
 
   // --- FUNÇÕES DE INTEGRAÇÃO (H5 e H6) ---
 
@@ -60,6 +61,7 @@ function App() {
       // Limpar formulário e recarregar lista
       setDescricao('');
       setValor('');
+      setTipo('entrada');
       carregarTransacoes();
     } catch (erro) {
       alert("Erro ao salvar transação");
@@ -78,7 +80,7 @@ function App() {
   const prepararEdicao = (t) => {
     setIdEmEdicao(t.id);
     setDescricao(t.descricao);
-    setValor(t.valor);
+    setValor(t.valor.toString());
     setTipo(t.tipo);
   };
 
