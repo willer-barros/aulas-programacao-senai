@@ -13,5 +13,13 @@
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^5.2.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willer-barros/aulas-programacao-senai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/willer-barros/aulas-programacao-senai/issues"
+  },
+  "homepage": "https://github.com/willer-barros/aulas-programacao-senai#readme"
 }
