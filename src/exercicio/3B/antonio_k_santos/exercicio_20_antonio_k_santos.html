@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 20 - Planos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f2f5;
+            font-family: Arial, sans-serif;
+            padding: 40px 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 860px;
+            width: 100%;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 36px 28px;
+            border: 2px solid #e0e0e0;
+            text-align: center;
+        }
+
+        .card:nth-child(2) {
+            border-color: #457b9d;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            color: #222;
+            margin-bottom: 20px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        .card ul li {
+            padding: 6px 0;
+            color: #555;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .card ul li::before {
+            content: "✓ ";
+            color: #2a9d8f;
+            font-weight: bold;
+        }
+
+        .preco {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #222;
+        }
+
+        .preco span {
+            font-size: 0.9rem;
+            color: #888;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <div class="card">
+            <h3>Básico</h3>
+            <ul>
+                <li>5 projetos</li>
+                <li>1 GB de armazenamento</li>
+                <li>Suporte por e-mail</li>
+            </ul>
+            <div class="preco">R$ 29 <span>/mês</span></div>
+        </div>
+
+        <div class="card">
+            <h3>Pro</h3>
+            <ul>
+                <li>50 projetos</li>
+                <li>20 GB de armazenamento</li>
+                <li>Suporte prioritário</li>
+            </ul>
+            <div class="preco">R$ 79 <span>/mês</span></div>
+        </div>
+
+        <div class="card">
+            <h3>Enterprise</h3>
+            <ul>
+                <li>Projetos ilimitados</li>
+                <li>500 GB de armazenamento</li>
+                <li>Suporte 24/7</li>
+            </ul>
+            <div class="preco">R$ 199 <span>/mês</span></div>
+        </div>
+    </div>
+</body>
+</html>
