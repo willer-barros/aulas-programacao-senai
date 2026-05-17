@@ -4,7 +4,7 @@ const logsDeAcesso = [
   { usuario: "willer_barros_senai", status: "erro" },
   { usuario: "arthur_basilio_senai", status: "erro" },
   { usuario: "neymar junior", status: "erro" },
-  { usuario: "kallany_gretchen_senai", status: "sucesso" }
+  { usuario: "José Henrico", status: "sucesso" }
 ];
 
 let totalErros = 0;
