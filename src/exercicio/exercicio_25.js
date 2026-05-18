@@ -1,67 +1,87 @@
-// Atividade: API de Checkout e Cupons (E-commerce)
-// Objetivo: Criar os endpoints de um sistema que calcula o valor final de uma compra aplicando cupons de desconto, simulando as regras de integridade de um e-commerce.
+﻿const express = require('express')
+const app = express()
 
-// 📋 Estrutura dos Dados (Arrays em memória)
-// Você terá dois arrays globais no seu arquivo:
+app.use(express.json())
 
-// JavaScript
-// // Cupons válidos no sistema
-// let cupons = [
-//   { codigo: "PROMO10", descontoPercentual: 10, ativo: true },
-//   { codigo: "DEV20", descontoPercentual: 20, ativo: true },
-//   { codigo: "EXPIRADO50", descontoPercentual: 50, ativo: false }
-// ];
+let cupons = [
+  { codigo: 'PROMO10', descontoPercentual: 10, ativo: true },
+  { codigo: 'DEV20', descontoPercentual: 20, ativo: true },
+  { codigo: 'EXPIRADO50', descontoPercentual: 50, ativo: false },
+]
 
-// // Itens atualmente no carrinho do cliente
-// let carrinho = [
-//   { id: 1, produto: "Mouse Gamer", preco: 150.00, quantidade: 2 },
-//   { id: 2, produto: "Teclado Mecânico", preco: 350.00, quantidade: 1 }
-// ];
-// 🛠️ Endpoints a Criar
-// GET /carrinho
+let carrinho = [
+  { id: 1, produto: 'Mouse Gamer', preco: 150.0, quantidade: 2 },
+  { id: 2, produto: 'Teclado Mecânico', preco: 350.0, quantidade: 1 },
+]
 
-// O que faz: Retorna os itens atuais do carrinho e o subtotal bruto (soma de preco * quantidade de todos os itens), sem desconto.
+app.get('/carrinho', (req, res) => {
+  const totalBruto = carrinho.reduce((acc, item) => acc + item.preco * item.quantidade, 0)
+  res.json({ itens: carrinho, totalBruto })
+})
 
-// POST /carrinho
+app.post('/carrinho', (req, res) => {
+  const { id, produto, preco, quantidade } = req.body
 
-// O que faz: Adiciona um novo produto ao carrinho.
+  if (id === undefined || !produto || preco === undefined || quantidade === undefined) {
+    return res.status(400).json({ erro: 'id, produto, preco e quantidade são obrigatórios' })
+  }
 
-// Regra de validação: Se o produto já existir no carrinho (mesmo id), em vez de adicionar um novo objeto, você deve somar a quantidade enviada à quantidade que já existia lá.
+  if (typeof preco !== 'number' || typeof quantidade !== 'number' || quantidade <= 0) {
+    return res.status(400).json({ erro: 'preco e quantidade devem ser números válidos' })
+  }
 
-// POST /checkout
+  const itemExistente = carrinho.find((item) => item.id === id)
 
-// O que faz: Finaliza a compra. Este endpoint recebe no corpo da requisição (req.body) apenas o código do cupom (ex: { "cupom": "PROMO10" }). O cupom também pode vir vazio.
+  if (itemExistente) {
+    itemExistente.quantidade += quantidade
+    return res.status(200).json({ mensagem: 'Quantidade atualizada no carrinho', item: itemExistente })
+  }
 
-// O que deve retornar: Um resumo financeiro contendo:
+  const novoItem = { id, produto, preco, quantidade }
+  carrinho.push(novoItem)
+  res.status(201).json({ mensagem: 'Item adicionado ao carrinho', item: novoItem })
+})
 
-// O valor bruto total dos itens.
+app.post('/checkout', (req, res) => {
+  const { cupom } = req.body
 
-// O valor do desconto aplicado (em Reais).
+  if (carrinho.length === 0) {
+    return res.status(400).json({ mensagem: 'Não é possível finalizar um carrinho vazio' })
+  }
 
-// O valor final a ser pago.
+  const totalBruto = carrinho.reduce((acc, item) => acc + item.preco * item.quantidade, 0)
 
-// ⚠️ Regras de Negócio e Validações Críticas (O Desafio do Exercício)
-// No endpoint POST /checkout, sua API precisa validar três cenários antes de calcular o valor final:
+  if (!cupom) {
+    return res.json({
+      mensagem: 'Checkout calculado com sucesso!',
+      totalBruto,
+      descontoAplicado: 0,
+      totalAPagar: Number(totalBruto.toFixed(2)),
+    })
+  }
 
-// Validação 1 (Carrinho Vazio): Se o array carrinho estiver vazio, retorne status 400 (Bad Request) com a mensagem "Não é possível finalizar um carrinho vazio".
+  const cupomBuscado = cupons.find((c) => c.codigo === String(cupom).trim())
 
-// Validação 2 (Cupom Inexistente): Se o usuário enviar um código de cupom que não existe no array cupons, retorne status 404 (Not Found) com a mensagem "Cupom inválido".
+  if (!cupomBuscado) {
+    return res.status(404).json({ mensagem: 'Cupom inválido' })
+  }
 
-// Validação 3 (Cupom Inativo): Se o cupom existir, mas o campo ativo for false, retorne status 400 (Bad Request) com a mensagem "Este cupom já expirou".
+  if (!cupomBuscado.ativo) {
+    return res.status(400).json({ mensagem: 'Este cupom já expirou' })
+  }
 
-// 💡 Exemplo de Retorno Esperado no /checkout (Sucesso)
-// Se o cliente enviar o cupom "PROMO10" para o carrinho padrão acima (Bruto: R$ 650,00):
+  const descontoAplicado = Number((totalBruto * (cupomBuscado.descontoPercentual / 100)).toFixed(2))
+  const totalAPagar = Number((totalBruto - descontoAplicado).toFixed(2))
 
-// JSON
-// {
-//   "mensagem": "Checkout calculado com sucesso!",
-//   "totalBruto": 650.00,
-//   "descontoAplicado": 65.00,
-//   "totalAPagar": 585.00
-// }
-// 🔍 Conceitos que você vai praticar aqui:
-// Método .reduce() para somar os valores do carrinho.
+  res.json({
+    mensagem: 'Checkout calculado com sucesso!',
+    totalBruto: Number(totalBruto.toFixed(2)),
+    descontoAplicado,
+    totalAPagar,
+  })
+})
 
-// Método .find() para buscar o cupom correto dentro do array de cupons.
-
-// Tratamento rigoroso de condicionais (if/else) para garantir as regras de segurança do e-commerce.
+const PORTA = 3000
+app.listen(PORTA, () => {
+  console.log(`API de checkout rodando em http://localhost:${PORTA}`)
+})

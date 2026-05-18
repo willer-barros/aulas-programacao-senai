@@ -4,13 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicio 20</title>
+    <link rel="stylesheet" href="exercicio_20.css">
 </head>
 <body>
-    <ul>
-    <li><strong>Objetivo:</strong> Criar três colunas comparativas de planos.</li>
-    <li><strong>HTML:</strong> Três divs principais (cards), cada uma com o nome do plano, uma lista (ul) de benefícios e o valor.</li>
-    <li><strong>CSS:</strong> Usar display: grid com três colunas de tamanhos iguais. Adicionar um destaque (como uma cor de borda diferente) apenas no card central.</li>
-    <li><strong>Conceito chave:</strong> Grid-template-columns, gap e seletores específicos de grid.</li>
-</ul>
+    <section class="planos">
+        <article class="plano">
+            <h2>Plano Básico</h2>
+            <ul>
+                <li>Acesso limitado</li>
+                <li>1 GB de armazenamento</li>
+                <li>Suporte por e-mail</li>
+            </ul>
+            <p class="preco">R$ 29,90</p>
+        </article>
+
+        <article class="plano plano-destaque">
+            <h2>Plano Intermediário</h2>
+            <ul>
+                <li>Acesso completo</li>
+                <li>10 GB de armazenamento</li>
+                <li>Suporte premium</li>
+            </ul>
+            <p class="preco">R$ 59,90</p>
+        </article>
+
+        <article class="plano">
+            <h2>Plano Avançado</h2>
+            <ul>
+                <li>Acesso completo</li>
+                <li>100 GB de armazenamento</li>
+                <li>Suporte 24/7</li>
+            </ul>
+            <p class="preco">R$ 99,90</p>
+        </article>
+    </section>
 </body>
 </html>

@@ -1,18 +1,52 @@
-// API de Autenticação e Usuários (Validação de Dados)
-// Objetivo: Praticar regras de negócio, criptografia simulada e códigos de status HTTP apropriados (400, 401, 409).
 
-// Estrutura do Objeto: { id: 1, email: "dev@email.com", senha: "123", ativo: true }
+const app = express()
 
-// Endpoints a criar:
+app.use(express.json())
 
-// POST /usuarios/cadastro: Cadastra um usuário.
+let usuarios = [
+  { id: 1, email: 'dev@email.com', senha: '123456', ativo: true }
+]
+let proximoId = usuarios.length ? Math.max(...usuarios.map((u) => u.id)) + 1 : 1
 
-// Regra 1: O e-mail não pode ser duplicado. Se já existir no array, retorne 409 (Conflict).
+app.post('/usuarios/cadastro', (req, res) => {
+  const { email, senha } = req.body
 
-// Regra 2: A senha deve ter no mínimo 6 caracteres. Se for menor, retorne 400 (Bad Request).
+  if (!email || !senha) {
+    return res.status(400).json({ erro: 'Email e senha são obrigatórios' })
+  }
 
-// POST /usuarios/login: Recebe email e senha no corpo.
+  if (usuarios.some((u) => u.email === email)) {
+    return res.status(409).json({ erro: 'Email já cadastrado' })
+  }
 
-//Testar via postman
+  if (senha.length < 6) {
+    return res.status(400).json({ erro: 'Senha deve ter no mínimo 6 caracteres' })
+  }
 
-// Procure o usuário no array. Se o e-mail não existir ou a senha estiver incorreta, retorne 401 (Unauthorized) com a mensagem "Credenciais inválidas". Se tudo estiver certo, retorne 200 com "Login efetuado com sucesso".
+  const novoUsuario = {
+    id: proximoId++,
+    email: email.trim(),
+    senha: senha.trim(),
+    ativo: true
+  }
+
+  usuarios.push(novoUsuario)
+  res.status(201).json(novoUsuario)
+})
+
+app.post('/usuarios/login', (req, res) => {
+  const { email, senha } = req.body
+
+  const usuario = usuarios.find((u) => u.email === email)
+
+  if (!usuario || usuario.senha !== senha) {
+    return res.status(401).json({ erro: 'Credenciais inválidas' })
+  }
+
+  res.json({ mensagem: 'Login efetuado com sucesso' })
+})
+
+const PORTA = 3000
+app.listen(PORTA, () => {
+  console.log(`API de usuários rodando em http://localhost:${PORTA}`)
+})

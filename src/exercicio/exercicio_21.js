@@ -1,18 +1,71 @@
-// 1. API de Gerenciamento de Tarefas (O clássico Todo List)
-// Objetivo: Praticar os 4 verbos básicos do CRUD e a manipulação de IDs.
+﻿const express = require('express')
+const app = express()
 
-// Estrutura do Objeto: { id: 1, descricao: "Estudar Express", concluida: false }
+app.use(express.json())
 
-// Endpoints a criar:
+let tarefas = [
+  { id: 1, descricao: 'Estudar Express', concluida: false },
+  { id: 2, descricao: 'Ler documentação', concluida: false },
+]
+let proximoId = tarefas.length ? Math.max(...tarefas.map((t) => t.id)) + 1 : 1
 
-// GET /tarefas: Retorna todas as tarefas.
+app.get('/tarefas', (req, res) => {
+  res.json(tarefas)
+})
 
-// POST /tarefas: Adiciona uma nova tarefa (gerar id automático e forçar concluida: false por padrão).
+app.post('/tarefas', (req, res) => {
+  const { descricao } = req.body
 
-// PUT /tarefas/:id: Permite alterar a descrição ou o status de concluída da tarefa.
+  if (!descricao || typeof descricao !== 'string') {
+    return res.status(400).json({ erro: 'Descrição obrigatória' })
+  }
 
-// DELETE /tarefas/:id: Remove a tarefa do array pelo ID.
+  const novaTarefa = {
+    id: proximoId++,
+    descricao: descricao.trim(),
+    concluida: false,
+  }
 
-//Testar via postman
+  tarefas.push(novaTarefa)
+  res.status(201).json(novaTarefa)
+})
 
-// Desafio Técnico: Se o usuário tentar atualizar ou deletar uma tarefa com um ID que não existe, sua API deve retornar o status 404 com a mensagem "Tarefa não encontrada".
+app.put('/tarefas/:id', (req, res) => {
+  const id = Number(req.params.id)
+  const { descricao, concluida } = req.body
+  const tarefa = tarefas.find((t) => t.id === id)
+
+  if (!tarefa) {
+    return res.status(404).json({ mensagem: 'Tarefa não encontrada' })
+  }
+
+  if (descricao !== undefined) {
+    if (typeof descricao !== 'string' || !descricao.trim()) {
+      return res.status(400).json({ erro: 'Descrição deve ser uma string não vazia' })
+    }
+    tarefa.descricao = descricao.trim()
+  }
+
+  if (concluida !== undefined) {
+    tarefa.concluida = Boolean(concluida)
+  }
+
+  res.json(tarefa)
+})
+
+app.delete('/tarefas/:id', (req, res) => {
+  const id = Number(req.params.id)
+  const indice = tarefas.findIndex((t) => t.id === id)
+
+  if (indice === -1) {
+    return res.status(404).json({ mensagem: 'Tarefa não encontrada' })
+  }
+
+  const tarefaRemovida = tarefas.splice(indice, 1)[0]
+  res.json(tarefaRemovida)
+})
+
+const PORTA = 3000
+app.listen(PORTA, () => {
+  console.log(`API de tarefas rodando em http://localhost:${PORTA}`)
+})

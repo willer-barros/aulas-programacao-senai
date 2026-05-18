@@ -4,13 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicio 18</title>
+    <link rel="stylesheet" href="exercicio_18.css">
 </head>
 <body>
-    <ul>
-    <li><strong>Objetivo:</strong> Estruturar um texto longo de forma legível e organizada.</li>
-    <li><strong>HTML:</strong> Utilizar as tags header, main, article e footer. Deve conter títulos (h1, h2) e parágrafos de texto.</li>
-    <li><strong>CSS:</strong> Definir uma largura máxima (max-width) para o texto, centralizar o bloco e ajustar o line-height para melhorar a leitura.</li>
-    <li><strong>Conceito chave:</strong> Tags semânticas, unidades de medida (px/rem) e espaçamento entre linhas.</li>
-</ul>
+    <article class="conteudo">
+        <header>
+            <h1>Como manter a leitura confortável em uma página</h1>
+            <p>Este texto demonstra o uso de tags semânticas, largura máxima para o conteúdo e espaçamento de leitura adequado.</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>A importância da estrutura semântica</h2>
+                <p>Usar tags como <strong>header</strong>, <strong>main</strong>, <strong>article</strong> e <strong>footer</strong> ajuda o navegador e as ferramentas de acessibilidade a entenderem melhor o conteúdo da página. Isso torna a página mais organizada e mais fácil de navegar.</p>
+                <p>Além disso, a semântica facilita a manutenção do código e melhora o SEO, pois os motores de busca conseguem identificar títulos e parágrafos relevantes.</p>
+            </section>
+
+            <section>
+                <h2>A leitura agradável precisa de espaçamento</h2>
+                <p>Definir uma largura máxima com <code>max-width</code> evita que o texto fique muito esticado em telas largas. Linhas muito longas cansam a vista e dificultam a leitura.</p>
+                <p>O <code>line-height</code> também é essencial: um espaço maior entre as linhas permite que o olho acompanhe o texto com mais conforto.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>Um layout simples como este já melhora bastante a experiência de leitura em textos mais longos.</p>
+        </footer>
+    </article>
 </body>
 </html>
