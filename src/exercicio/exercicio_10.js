@@ -1,10 +1,10 @@
 // 1. Variáveis e Dados (Array de Objetos)
 const logsDeAcesso = [
   { usuario: "admin", status: "sucesso" },
-  { usuario: "willer", status: "erro" },
-  { usuario: "kaua", status: "erro" },
-  { usuario: "silva", status: "erro" },
-  { usuario: "cpero", status: "sucesso" }
+  { usuario: "willer_barros_senai", status: "erro" },
+  { usuario: "arthur_basilio_senai", status: "erro" },
+  { usuario: "neymar junior", status: "erro" },
+  { usuario: "kallany_gretchen_senai", status: "sucesso" }
 ];
 
 let totalErros = 0;

@@ -1,59 +1,18 @@
-const express = require("express");
-const app = express();
+// 1. API de Gerenciamento de Tarefas (O clássico Todo List)
+// Objetivo: Praticar os 4 verbos básicos do CRUD e a manipulação de IDs.
 
-app.use(express.json());
+// Estrutura do Objeto: { id: 1, descricao: "Estudar Express", concluida: false }
 
-let tarefas = [
-  { id: 1, descricao: "Estudar Express", concluida: false }
-];
-let proximoId = 2;
+// Endpoints a criar:
 
-app.get("/tarefas", (req, res) => {
-  res.json(tarefas);
-});
+// GET /tarefas: Retorna todas as tarefas.
 
-app.post("/tarefas", (req, res) => {
-  const { descricao } = req.body;
+// POST /tarefas: Adiciona uma nova tarefa (gerar id automático e forçar concluida: false por padrão).
 
-  const novaTarefa = {
-    id: proximoId++,
-    descricao: descricao,
-    concluida: false
-  };
+// PUT /tarefas/:id: Permite alterar a descrição ou o status de concluída da tarefa.
 
-  tarefas.push(novaTarefa);
-  res.status(201).json(novaTarefa);
-});
+// DELETE /tarefas/:id: Remove a tarefa do array pelo ID.
 
-app.put("/tarefas/:id", (req, res) => {
-  const idBuscado = parseInt(req.params.id);
-  const { descricao, concluida } = req.body;
+//Testar via postman
 
-  const tarefa = tarefas.find(t => t.id === idBuscado);
-
-  if (!tarefa) {
-    return res.status(404).json({ mensagem: "Tarefa não encontrada" });
-  }
-
-  if (descricao !== undefined) tarefa.descricao = descricao;
-  if (concluida !== undefined) tarefa.concluida = concluida;
-
-  res.json(tarefa);
-});
-
-app.delete("/tarefas/:id", (req, res) => {
-  const idBuscado = parseInt(req.params.id);
-  
-  const indice = tarefas.findIndex(t => t.id === idBuscado);
-
-  if (indice === -1) {
-    return res.status(404).json({ mensagem: "Tarefa não encontrada" });
-  }
-
-  tarefas.splice(indice, 1);
-  res.status(204).send();
-});
-
-app.listen(3000, () => {
-  console.log("API rodando em http://localhost:3000");
-});
+// Desafio Técnico: Se o usuário tentar atualizar ou deletar uma tarefa com um ID que não existe, sua API deve retornar o status 404 com a mensagem "Tarefa não encontrada".

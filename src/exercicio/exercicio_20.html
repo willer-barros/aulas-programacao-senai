@@ -1,58 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicio 20</title>
-    <style>
-        .container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            max-width: 600px;
-            margin: 20px auto;
-        }
-
-        .card {
-            border: 1px solid #ccc;
-            padding: 15px;
-        }
-
-        .destaque {
-            border: 2px solid blue;
-        }
-    </style>
 </head>
 <body>
-
-    <div class="container">
-        
-        <div class="card">
-            <h3>Plano virgem</h3>
-            <p>R$ 29/mês</p>
-            <ul>
-                <li>Direito a revista e videos</li>
-                <li>Suporte por email</li>
-            </ul>
-        </div>
-
-        <div class="card destaque">
-            <h3>Plano prazer</h3>
-            <p>R$ 59/mês</p>
-            <ul>
-                <li>Direito a 1 tra.., revista e videos</li>
-                <li>Suporte 24h</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h3>Plano basilio</h3>
-            <p>R$ 99/mês</p>
-            <ul>
-                <li>TUDO ILIMITADO</li>
-                <li>Suporte VIP</li>
-            </ul>
-        </div>
-
-    </div>
-
+    <ul>
+    <li><strong>Objetivo:</strong> Criar três colunas comparativas de planos.</li>
+    <li><strong>HTML:</strong> Três divs principais (cards), cada uma com o nome do plano, uma lista (ul) de benefícios e o valor.</li>
+    <li><strong>CSS:</strong> Usar display: grid com três colunas de tamanhos iguais. Adicionar um destaque (como uma cor de borda diferente) apenas no card central.</li>
+    <li><strong>Conceito chave:</strong> Grid-template-columns, gap e seletores específicos de grid.</li>
+</ul>
 </body>
 </html>

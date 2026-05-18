@@ -1,35 +1,20 @@
-const express = require("express");
-const app = express();
+// API de Catálogo de Filmes com Filtros (Query Params)
+// Objetivo: Aprender a capturar parâmetros de busca na URL utilizando req.query.
 
-app.use(express.json());
+// Estrutura do Objeto: { id: 1, titulo: "Inception", genero: "Ficção", ano: 2010 }
 
-const filmes = [
-  { id: 1, titulo: "Inception", genero: "Ficção", ano: 2010 },
-  { id: 2, titulo: "The Matrix", genero: "Ficção", ano: 1999 },
-  { id: 3, titulo: "O Poderoso Chefão", genero: "Drama", ano: 1972 },
-  { id: 4, titulo: "Interestelar", genero: "Ficção", ano: 2014 },
-  { id: 5, titulo: "Bastardos Inglórios", genero: "Ação", ano: 2009 }
-];
+// Povoamento: Inicie o array com pelo menos 5 filmes de gêneros e anos diferentes.
 
-app.get("/filmes", (req, res) => {
-  const { genero, ano } = req.query;
-  let filmesFiltrados = filmes;
+// Endpoints a criar:
 
-  if (genero) {
-    filmesFiltrados = filmesFiltrados.filter(
-      f => f.genero.toLowerCase() === genero.toLowerCase()
-    );
-  }
+// GET /filmes: Este endpoint deve ser inteligente.
 
-  if (ano) {
-    filmesFiltrados = filmesFiltrados.filter(
-      f => f.ano === parseInt(ano)
-    );
-  }
+// Se o usuário acessar /filmes, retorna todos.
 
-  res.json(filmesFiltrados);
-});
+// Se o usuário acessar /filmes?genero=Ficção, deve retornar apenas os filmes desse gênero.
 
-app.listen(3000, () => {
-  console.log("API de Filmes rodando em http://localhost:3000");
-});
+// Se acessar /filmes?ano=2010, retorna apenas os daquele ano.
+
+//Testar via postman
+
+// Desafio Técnico: Use o método .filter() do JavaScript para aplicar os filtros dinamicamente caso as variáveis cheguem através do req.query.
