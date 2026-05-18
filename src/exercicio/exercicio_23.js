@@ -1,18 +1,50 @@
-// API de Autenticação e Usuários (Validação de Dados)
-// Objetivo: Praticar regras de negócio, criptografia simulada e códigos de status HTTP apropriados (400, 401, 409).
+const express = require("express");
+const app = express();
 
-// Estrutura do Objeto: { id: 1, email: "dev@email.com", senha: "123", ativo: true }
+app.use(express.json());
 
-// Endpoints a criar:
+const usuarios = [];
+let proximoId = 1;
 
-// POST /usuarios/cadastro: Cadastra um usuário.
+app.post("/usuarios/cadastro", (req, res) => {
+  const { email, senha } = req.body;
 
-// Regra 1: O e-mail não pode ser duplicado. Se já existir no array, retorne 409 (Conflict).
+  if (!email || !senha) {
+    return res.status(400).json({ mensagem: "E-mail e senha são obrigatórios" });
+  }
 
-// Regra 2: A senha deve ter no mínimo 6 caracteres. Se for menor, retorne 400 (Bad Request).
+  if (senha.length < 6) {
+    return res.status(400).json({ mensagem: "A senha deve ter no mínimo 6 caracteres" });
+  }
 
-// POST /usuarios/login: Recebe email e senha no corpo.
+  const usuarioExiste = usuarios.find(u => u.email === email);
+  if (usuarioExiste) {
+    return res.status(409).json({ mensagem: "Este e-mail já está cadastrado" });
+  }
 
-//Testar via postman
+  const novoUsuario = {
+    id: proximoId++,
+    email: email,
+    senha: senha,
+    ativo: true
+  };
 
-// Procure o usuário no array. Se o e-mail não existir ou a senha estiver incorreta, retorne 401 (Unauthorized) com a mensagem "Credenciais inválidas". Se tudo estiver certo, retorne 200 com "Login efetuado com sucesso".
+  usuarios.push(novoUsuario);
+  res.status(201).json({ mensagem: "Usuário cadastrado com sucesso", usuario: { id: novoUsuario.id, email: novoUsuario.email } });
+});
+
+app.post("/usuarios/login", (req, res) => {
+  const { email, senha } = req.body;
+
+  const usuario = usuarios.find(u => u.email === email);
+
+  if (!usuario || usuario.senha !== senha) {
+    return res.status(401).json({ mensagem: "Credenciais inválidas" });
+  }
+
+  res.status(200).json({ mensagem: "Login efetuado com sucesso" });
+});
+
+app.listen(3000, () => {
+  console.log("API de Autenticação rodando em http://localhost:3000");
+});
