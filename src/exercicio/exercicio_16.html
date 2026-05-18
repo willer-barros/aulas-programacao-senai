@@ -1,17 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicio 16</title>
+    <style>
+        .card {
+            width: 250px;            
+            margin: 0 auto;      
+            padding: 10px;           
+            box-shadow: 5px 5px 5px gray; 
+        }
+        img {
+            border-radius: 50%;       
+        }
+        img {
+            width: 100px;             
+            height: 100px;            
+            border-radius: 50%;      
+        }
+    </style>
 </head>
 <body>
-    <ul>
-    <li><strong>Objetivo:</strong> Criar um card de perfil simples.</li>
-    <li><strong>HTML:</strong> Uma div contendo uma imagem circular, um h2 para o nome e um (p) para a biografia.</li>
-    <li><strong>CSS:</strong> Definir largura fixa para o card, centralizá-lo na tela, adicionar um border-radius: 50% na imagem e uma sombra leve (box-shadow) no card.</li>
-    <li><strong>Conceito chave:</strong> Margens, preenchimentos (padding) e bordas.</li>
-</ul>
-   
+
+    <div class="card">
+        <img src="https://pbs.twimg.com/profile_images/1907809653/image_400x400.jpg" alt="Foto">
+        <h2>Clovis B</h2>
+        <p>Homem de respeito</p>
+    </div>
+
 </body>
 </html>
