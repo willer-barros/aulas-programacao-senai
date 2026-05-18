@@ -1,18 +1,50 @@
-// API de Sistema de Pedidos (Relacionamento de Dados)
-// Objetivo: Simular como uma API lida com tabelas/entidades relacionadas (Ex: Clientes e Pedidos).
+const express = require("express");
+const app = express();
 
-// Estrutura dos Dados: Você terá dois arrays separados: clientes e pedidos.
+app.use(express.json());
 
-// Cliente: { id: 1, nome: "Carlos" }
+const clientes = [
+  { id: 1, nome: "Carlos" },
+  { id: 2, nome: "Ana" }
+];
 
-// Pedido: { id: 101, clienteId: 1, produto: "Teclado Mecânico", valor: 250.00 } (Note que clienteId amarra o pedido ao Carlos).
+const pedidos = [
+  { id: 101, clienteId: 1, produto: "Teclado Mecânico", valor: 250.00 }
+];
 
-// Endpoints a criar:
+let proximoPedidoId = 102;
 
-// POST /pedidos: Cria um pedido.
+app.post("/pedidos", (req, res) => {
+  const { clienteId, produto, valor } = req.body;
 
-//Testar via POSTMAN
+  const clienteExiste = clientes.find(c => c.id === clienteId);
+  if (!clienteExiste) {
+    return res.status(400).json({ mensagem: "Cliente inexistente" });
+  }
 
-// Validação Crítica: Antes de dar o push no array de pedidos, sua API precisa verificar se o clienteId enviado realmente existe no array de clientes. Se não existir, barre a criação com o status 400 ("Cliente inexistente").
+  const novoPedido = {
+    id: proximoPedidoId++,
+    clienteId: clienteId,
+    produto: produto,
+    valor: valor
+  };
 
-// GET /clientes/:id/pedidos: Retorna apenas os pedidos daquele cliente específico.
+  pedidos.push(novoPedido);
+  res.status(201).json(novoPedido);
+});
+
+app.get("/clientes/:id/pedidos", (req, res) => {
+  const idClienteBuscado = parseInt(req.params.id);
+
+  const clienteExiste = clientes.find(c => c.id === idClienteBuscado);
+  if (!clienteExiste) {
+    return res.status(404).json({ mensagem: "Cliente não encontrado" });
+  }
+
+  const pedidosDoCliente = pedidos.filter(p => p.clienteId === idClienteBuscado);
+  res.json(pedidosDoCliente);
+});
+
+app.listen(3000, () => {
+  console.log("API de Pedidos rodando em http://localhost:3000");
+});
