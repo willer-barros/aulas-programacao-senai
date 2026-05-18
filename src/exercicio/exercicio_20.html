@@ -1,16 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercicio 20</title>
+    <title>Exercício 20</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .destaque {
+            border: 3px solid royalblue;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        .preco {
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: royalblue;
+        }
+
+    </style>
 </head>
+
 <body>
-    <ul>
-    <li><strong>Objetivo:</strong> Criar três colunas comparativas de planos.</li>
-    <li><strong>HTML:</strong> Três divs principais (cards), cada uma com o nome do plano, uma lista (ul) de benefícios e o valor.</li>
-    <li><strong>CSS:</strong> Usar display: grid com três colunas de tamanhos iguais. Adicionar um destaque (como uma cor de borda diferente) apenas no card central.</li>
-    <li><strong>Conceito chave:</strong> Grid-template-columns, gap e seletores específicos de grid.</li>
-</ul>
+
+    <section class="container">
+
+        <div class="card">
+            <h2>Plano Básico</h2>
+
+            <ul>
+                <li>1 Usuário</li>
+                <li>5GB de armazenamento</li>
+                <li>Suporte básico</li>
+            </ul>
+
+            <p class="preco">R$ 29,90</p>
+        </div>
+
+        <div class="card destaque">
+            <h2>Plano Premium</h2>
+
+            <ul>
+                <li>5 Usuários</li>
+                <li>50GB de armazenamento</li>
+                <li>Suporte prioritário</li>
+            </ul>
+
+            <p class="preco">R$ 59,90</p>
+        </div>
+
+        <div class="card">
+            <h2>Plano Empresarial</h2>
+
+            <ul>
+                <li>Usuários ilimitados</li>
+                <li>200GB de armazenamento</li>
+                <li>Suporte 24h</li>
+            </ul>
+
+            <p class="preco">R$ 99,90</p>
+        </div>
+
+    </section>
+
 </body>
 </html>
