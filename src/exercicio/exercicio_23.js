@@ -1,18 +1,84 @@
-// API de Autenticação e Usuários (Validação de Dados)
-// Objetivo: Praticar regras de negócio, criptografia simulada e códigos de status HTTP apropriados (400, 401, 409).
+const express = require("express")
 
-// Estrutura do Objeto: { id: 1, email: "dev@email.com", senha: "123", ativo: true }
+const app = express()
 
-// Endpoints a criar:
+app.use(express.json())
 
-// POST /usuarios/cadastro: Cadastra um usuário.
+const PORT = 3000
 
-// Regra 1: O e-mail não pode ser duplicado. Se já existir no array, retorne 409 (Conflict).
+let usuarios = []
 
-// Regra 2: A senha deve ter no mínimo 6 caracteres. Se for menor, retorne 400 (Bad Request).
+let proximoId = 1
 
-// POST /usuarios/login: Recebe email e senha no corpo.
+// Cadastro de usuário
+app.post("/usuarios/cadastro", (req, res) => {
 
-//Testar via postman
+    const { email, senha } = req.body
 
-// Procure o usuário no array. Se o e-mail não existir ou a senha estiver incorreta, retorne 401 (Unauthorized) com a mensagem "Credenciais inválidas". Se tudo estiver certo, retorne 200 com "Login efetuado com sucesso".
+    // Verifica se o e-mail já existe
+    const usuarioExistente = usuarios.find(
+        usuario => usuario.email === email
+    )
+
+    if (usuarioExistente) {
+
+        return res.status(409).json({
+            mensagem: "E-mail já cadastrado"
+        })
+
+    }
+
+    // Verifica tamanho da senha
+    if (senha.length < 6) {
+
+        return res.status(400).json({
+            mensagem: "A senha deve ter no mínimo 6 caracteres"
+        })
+
+    }
+
+    // Cria novo usuário
+    const novoUsuario = {
+        id: proximoId++,
+        email,
+        senha,
+        ativo: true
+    }
+
+    usuarios.push(novoUsuario)
+
+    res.status(201).json({
+        mensagem: "Usuário cadastrado com sucesso",
+        usuario: novoUsuario
+    })
+
+})
+
+// Login
+app.post("/usuarios/login", (req, res) => {
+
+    const { email, senha } = req.body
+
+    const usuario = usuarios.find(
+        usuario => usuario.email === email && usuario.senha === senha
+    )
+
+    if (!usuario) {
+
+        return res.status(401).json({
+            mensagem: "Credenciais inválidas"
+        })
+
+    }
+
+    res.status(200).json({
+        mensagem: "Login efetuado com sucesso"
+    })
+
+})
+
+app.listen(PORT, () => {
+
+    console.log(`Servidor rodando na porta ${PORT}`)
+
+})

@@ -1,18 +1,73 @@
-// API de Sistema de Pedidos (Relacionamento de Dados)
-// Objetivo: Simular como uma API lida com tabelas/entidades relacionadas (Ex: Clientes e Pedidos).
+const express = require("express")
 
-// Estrutura dos Dados: Você terá dois arrays separados: clientes e pedidos.
+const app = express()
 
-// Cliente: { id: 1, nome: "Carlos" }
+app.use(express.json())
 
-// Pedido: { id: 101, clienteId: 1, produto: "Teclado Mecânico", valor: 250.00 } (Note que clienteId amarra o pedido ao Carlos).
+const PORT = 3000
 
-// Endpoints a criar:
+// Array de clientes
+const clientes = [
+    { id: 1, nome: "Carlos" },
+    { id: 2, nome: "Ana" },
+    { id: 3, nome: "Marcos" }
+]
 
-// POST /pedidos: Cria um pedido.
+// Array de pedidos
+let pedidos = []
 
-//Testar via POSTMAN
+let proximoPedidoId = 101
 
-// Validação Crítica: Antes de dar o push no array de pedidos, sua API precisa verificar se o clienteId enviado realmente existe no array de clientes. Se não existir, barre a criação com o status 400 ("Cliente inexistente").
+// POST /pedidos
+app.post("/pedidos", (req, res) => {
 
-// GET /clientes/:id/pedidos: Retorna apenas os pedidos daquele cliente específico.
+    const { clienteId, produto, valor } = req.body
+
+    // Verifica se o cliente existe
+    const clienteExiste = clientes.find(
+        cliente => cliente.id === clienteId
+    )
+
+    if (!clienteExiste) {
+
+        return res.status(400).json({
+            mensagem: "Cliente inexistente"
+        })
+
+    }
+
+    // Cria novo pedido
+    const novoPedido = {
+        id: proximoPedidoId++,
+        clienteId,
+        produto,
+        valor
+    }
+
+    pedidos.push(novoPedido)
+
+    res.status(201).json({
+        mensagem: "Pedido criado com sucesso",
+        pedido: novoPedido
+    })
+
+})
+
+// GET /clientes/:id/pedidos
+app.get("/clientes/:id/pedidos", (req, res) => {
+
+    const idCliente = Number(req.params.id)
+
+    const pedidosCliente = pedidos.filter(
+        pedido => pedido.clienteId === idCliente
+    )
+
+    res.json(pedidosCliente)
+
+})
+
+app.listen(PORT, () => {
+
+    console.log(`Servidor rodando na porta ${PORT}`)
+
+})

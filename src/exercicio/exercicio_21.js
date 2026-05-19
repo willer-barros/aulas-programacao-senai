@@ -1,18 +1,97 @@
-// 1. API de Gerenciamento de Tarefas (O clássico Todo List)
-// Objetivo: Praticar os 4 verbos básicos do CRUD e a manipulação de IDs.
+const express = require("express")
 
-// Estrutura do Objeto: { id: 1, descricao: "Estudar Express", concluida: false }
+const app = express()
 
-// Endpoints a criar:
+app.use(express.json())
 
-// GET /tarefas: Retorna todas as tarefas.
+const PORT = 3000
 
-// POST /tarefas: Adiciona uma nova tarefa (gerar id automático e forçar concluida: false por padrão).
+let tarefas = []
 
-// PUT /tarefas/:id: Permite alterar a descrição ou o status de concluída da tarefa.
+let proximoId = 1
 
-// DELETE /tarefas/:id: Remove a tarefa do array pelo ID.
+// GET - listar tarefas
+app.get("/tarefas", (req, res) => {
 
-//Testar via postman
+    res.json(tarefas)
 
-// Desafio Técnico: Se o usuário tentar atualizar ou deletar uma tarefa com um ID que não existe, sua API deve retornar o status 404 com a mensagem "Tarefa não encontrada".
+})
+
+// POST - criar tarefa
+app.post("/tarefas", (req, res) => {
+
+    const { descricao } = req.body
+
+    const novaTarefa = {
+        id: proximoId++,
+        descricao,
+        concluida: false
+    }
+
+    tarefas.push(novaTarefa)
+
+    res.status(201).json(novaTarefa)
+
+})
+
+// PUT - atualizar tarefa
+app.put("/tarefas/:id", (req, res) => {
+
+    const id = Number(req.params.id)
+
+    const tarefa = tarefas.find(
+        tarefa => tarefa.id === id
+    )
+
+    if (!tarefa) {
+
+        return res.status(404).json({
+            mensagem: "Tarefa não encontrada"
+        })
+
+    }
+
+    const { descricao, concluida } = req.body
+
+    if (descricao !== undefined) {
+        tarefa.descricao = descricao
+    }
+
+    if (concluida !== undefined) {
+        tarefa.concluida = concluida
+    }
+
+    res.json(tarefa)
+
+})
+
+// DELETE - remover tarefa
+app.delete("/tarefas/:id", (req, res) => {
+
+    const id = Number(req.params.id)
+
+    const indice = tarefas.findIndex(
+        tarefa => tarefa.id === id
+    )
+
+    if (indice === -1) {
+
+        return res.status(404).json({
+            mensagem: "Tarefa não encontrada"
+        })
+
+    }
+
+    tarefas.splice(indice, 1)
+
+    res.json({
+        mensagem: "Tarefa removida com sucesso"
+    })
+
+})
+
+app.listen(PORT, () => {
+
+    console.log(`Servidor rodando na porta ${PORT}`)
+
+})
