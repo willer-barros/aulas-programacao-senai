@@ -1,0 +1,341 @@
+/* =========================================
+   Exercício 18 — Artigo Editorial
+   Tema: Dark editorial / tipografia
+   ========================================= */
+
+:root {
+  --bg:        #0c0c0c;
+  --bg-header: rgba(12, 12, 12, 0.85);
+  --surface:   #141414;
+  --accent:    #c9a96e;
+  --accent-rgb: 201, 169, 110;
+  --white:     #f2f2f2;
+  --text:      #c8c8c8;
+  --muted:     #606060;
+  --border:    rgba(255, 255, 255, 0.07);
+  --radius:    4px;
+  --ease:      cubic-bezier(0.4, 0, 0.2, 1);
+  --max-w:     680px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* =========================================
+   BARRA DE PROGRESSO DE LEITURA
+   ========================================= */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--accent);
+  z-index: 1000;
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
+/* =========================================
+   HEADER STICKY
+   ========================================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-header);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  animation: slideDown 0.6s var(--ease) both;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.header-nav {
+  display: flex;
+  gap: 28px;
+}
+
+.header-nav a {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.header-nav a:hover { color: var(--white); }
+
+/* =========================================
+   ARTIGO — HERO
+   ========================================= */
+.article-main {
+  padding: 80px 32px 0;
+  animation: fadeInUp 0.8s 0.1s var(--ease) both;
+}
+
+article {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.article-hero {
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 48px;
+}
+
+.article-category {
+  display: inline-block;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  border-radius: 100px;
+  padding: 3px 10px;
+  margin-bottom: 24px;
+}
+
+.article-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 32px;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.author-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.meta-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.author-name {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.article-info {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* =========================================
+   ARTIGO — CORPO (conceito do exercício)
+   max-width, centralizado, line-height
+   ========================================= */
+.article-body {
+  margin-bottom: 56px;
+}
+
+.article-body p {
+  margin-bottom: 1.5em;
+  color: var(--text);
+}
+
+.article-lead {
+  font-size: 1.15rem;
+  color: var(--white) !important;
+  line-height: 1.7;
+  margin-bottom: 2em !important;
+}
+
+.article-body em {
+  font-style: italic;
+  color: var(--white);
+}
+
+.article-body h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin: 2.5em 0 1em;
+  padding-left: 16px;
+  border-left: 2px solid var(--accent);
+  line-height: 1.3;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* Pull quote */
+.pull-quote {
+  margin: 2.5em 0;
+  padding: 28px 32px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  position: relative;
+  overflow: hidden;
+}
+
+.pull-quote::before {
+  content: '\201C';
+  position: absolute;
+  top: -10px;
+  left: 18px;
+  font-size: 7rem;
+  line-height: 1;
+  color: rgba(var(--accent-rgb), 0.12);
+  font-family: Georgia, serif;
+  pointer-events: none;
+  user-select: none;
+}
+
+.pull-quote p {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--white) !important;
+  line-height: 1.6;
+  margin-bottom: 12px !important;
+  position: relative;
+  z-index: 1;
+}
+
+.pull-quote cite {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-style: normal;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  display: block;
+}
+
+/* =========================================
+   TAGS
+   ========================================= */
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  margin-bottom: 80px;
+}
+
+.article-tags span {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 5px 12px;
+  transition: color 0.2s, border-color 0.2s;
+  cursor: default;
+}
+
+.article-tags span:hover {
+  color: var(--accent);
+  border-color: rgba(var(--accent-rgb), 0.4);
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.site-footer {
+  border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-copy {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.footer-nav {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-nav a {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.75rem;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.footer-nav a:hover { color: var(--white); }
+
+/* =========================================
+   KEYFRAMES
+   ========================================= */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 600px) {
+  .header-nav { display: none; }
+  .article-main { padding: 48px 20px 0; }
+  .footer-inner { flex-direction: column; text-align: center; }
+}

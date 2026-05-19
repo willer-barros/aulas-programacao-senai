@@ -1,16 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercicio 18</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Futuro do Design Digital — Exercício 18</title>
+  <link rel="stylesheet" href="style_18.css">
 </head>
 <body>
-    <ul>
-    <li><strong>Objetivo:</strong> Estruturar um texto longo de forma legível e organizada.</li>
-    <li><strong>HTML:</strong> Utilizar as tags header, main, article e footer. Deve conter títulos (h1, h2) e parágrafos de texto.</li>
-    <li><strong>CSS:</strong> Definir uma largura máxima (max-width) para o texto, centralizar o bloco e ajustar o line-height para melhorar a leitura.</li>
-    <li><strong>Conceito chave:</strong> Tags semânticas, unidades de medida (px/rem) e espaçamento entre linhas.</li>
-</ul>
+
+  <div class="progress-bar" id="progress-bar"></div>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a class="logo" href="#">Editorial</a>
+      <nav class="header-nav">
+        <a href="#">Design</a>
+        <a href="#">Tecnologia</a>
+        <a href="#">Cultura</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="article-main">
+    <article>
+
+      <div class="article-hero">
+        <span class="article-category">Design Digital</span>
+        <h1 class="article-title">O Futuro do<br>Design Digital</h1>
+        <div class="article-meta">
+          <img class="author-avatar"
+            src="https://i.pravatar.cc/48?img=25"
+            alt="Marina Oliveira">
+          <div class="meta-text">
+            <span class="author-name">Marina Oliveira</span>
+            <span class="article-info">14 Mai 2026 &middot; 8 min de leitura</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-body">
+
+        <p class="article-lead">Vivemos um momento de transição profunda no design. As ferramentas evoluíram, os processos se tornaram mais colaborativos e as fronteiras entre produto, marca e comunicação estão se dissolvendo em tempo real.</p>
+
+        <h2>A Era dos Sistemas de Design</h2>
+        <p>Sistemas como o Material Design do Google e o Fluent da Microsoft estabeleceram um novo paradigma: o designer não cria mais peça a peça, mas constrói linguagens visuais replicáveis. Tokens de design, bibliotecas de componentes e documentação viva tornaram-se tão importantes quanto o Photoshop foi para a geração anterior.</p>
+        <p>A consequência direta é uma mudança de habilidade valorizada: hoje, um designer que domina nomenclatura de variáveis, comunicação técnica e controle de versão tem vantagem competitiva sobre um que apenas domina a ferramenta de prototipagem.</p>
+
+        <blockquote class="pull-quote">
+          <p>"Bom design é tão pouco design quanto possível. Menos, porém melhor."</p>
+          <cite>— Dieter Rams</cite>
+        </blockquote>
+
+        <h2>Tipografia como Linguagem</h2>
+        <p>A escolha tipográfica vai muito além da estética. Ela comunica hierarquia, personalidade e confiança. O aumento das <em>variable fonts</em> — fontes variáveis — permitiu que um único arquivo se adapte fluidamente a diferentes pesos, larguras e óticas, reduzindo carga e ampliando expressividade sem comprometer a performance.</p>
+        <p>Ao mesmo tempo, a legibilidade voltou ao centro do debate. Tamanhos mínimos de 16px, line-height entre 1.6 e 1.8 e espaçamento de parágrafos adequado deixaram de ser recomendações e tornaram-se requisitos de acessibilidade amplamente aceitos.</p>
+
+        <h2>Acessibilidade não é Opcional</h2>
+        <p>Cerca de 15% da população mundial vive com algum tipo de deficiência. Projetar para esses usuários não é um esforço extra — é o padrão mínimo de qualidade. Contraste de cores, foco visível, ordem semântica de títulos e compatibilidade com leitores de tela são responsabilidades compartilhadas entre designer e desenvolvedor.</p>
+        <p>Ferramentas como axe, Lighthouse e o próprio inspetor do navegador tornaram simples a verificação básica de conformidade. A pergunta já não é "temos tempo para isso", mas sim "podemos nos dar ao luxo de ignorar um em cada seis usuários"?</p>
+
+        <h2>O Papel da IA no Processo Criativo</h2>
+        <p>Ferramentas generativas estão mudando onde o designer investe seu tempo: menos execução manual, mais tomada de decisão estratégica. Geração de variações de layout, criação de ativos de imagem e sugestões de paleta já são tarefas que modelos de difusão executam em segundos.</p>
+        <p>A pergunta não é se a IA vai substituir designers, mas quais designers vão usar IA para ampliar sua capacidade de impacto — e quais continuarão produzindo em ritmo e escala que não competem com a máquina.</p>
+
+      </div>
+
+      <div class="article-tags">
+        <span>Design</span>
+        <span>UI/UX</span>
+        <span>Tipografia</span>
+        <span>Acessibilidade</span>
+        <span>Inteligência Artificial</span>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-copy">&copy; 2026 Editorial. Todos os direitos reservados.</p>
+      <nav class="footer-nav">
+        <a href="#">Sobre</a>
+        <a href="#">Contato</a>
+        <a href="#">Privacidade</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="exercicio_18.js"></script>
 </body>
 </html>

@@ -1,16 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercicio 20</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planos — Exercício 20</title>
+  <link rel="stylesheet" href="style_20.css">
 </head>
 <body>
-    <ul>
-    <li><strong>Objetivo:</strong> Criar três colunas comparativas de planos.</li>
-    <li><strong>HTML:</strong> Três divs principais (cards), cada uma com o nome do plano, uma lista (ul) de benefícios e o valor.</li>
-    <li><strong>CSS:</strong> Usar display: grid com três colunas de tamanhos iguais. Adicionar um destaque (como uma cor de borda diferente) apenas no card central.</li>
-    <li><strong>Conceito chave:</strong> Grid-template-columns, gap e seletores específicos de grid.</li>
-</ul>
+
+  <div class="page">
+
+    <header class="pricing-header">
+      <span class="eyebrow">Planos e Preços</span>
+      <h1 class="pricing-title">Escolha o Plano Ideal</h1>
+      <p class="pricing-desc">Comece gratuitamente. Escale quando precisar. Cancele a qualquer momento.</p>
+
+      <div class="billing-toggle">
+        <span class="toggle-label" id="lbl-monthly">Mensal</span>
+        <button
+          class="toggle-switch"
+          id="billing-toggle"
+          role="switch"
+          aria-checked="false"
+          aria-label="Alternar entre cobrança mensal e anual">
+          <span class="toggle-thumb"></span>
+        </button>
+        <span class="toggle-label" id="lbl-annual">
+          Anual <span class="discount-badge">−20%</span>
+        </span>
+      </div>
+    </header>
+
+    <div class="pricing-grid" id="pricing-grid">
+
+      <div class="plan-card" data-plan="starter">
+        <div class="plan-top">
+          <span class="plan-name">Starter</span>
+          <div class="plan-price">
+            <span class="price-currency">R$</span>
+            <span class="price-amount" data-monthly="49" data-annual="39">49</span>
+            <span class="price-period">/mês</span>
+          </div>
+          <p class="plan-desc">Para freelancers e projetos pessoais.</p>
+        </div>
+        <ul class="plan-features">
+          <li class="feat feat-yes">5 projetos ativos</li>
+          <li class="feat feat-yes">10 GB de armazenamento</li>
+          <li class="feat feat-yes">2 colaboradores</li>
+          <li class="feat feat-yes">Suporte por e-mail</li>
+          <li class="feat feat-no">Analytics avançado</li>
+          <li class="feat feat-no">Acesso à API</li>
+          <li class="feat feat-no">SSO / SAML</li>
+        </ul>
+        <button class="plan-btn">Começar Grátis</button>
+      </div>
+
+      <div class="plan-card is-featured" data-plan="pro">
+        <div class="plan-badge">Mais Popular</div>
+        <div class="plan-top">
+          <span class="plan-name">Pro</span>
+          <div class="plan-price">
+            <span class="price-currency">R$</span>
+            <span class="price-amount" data-monthly="149" data-annual="119">149</span>
+            <span class="price-period">/mês</span>
+          </div>
+          <p class="plan-desc">Para equipes em crescimento acelerado.</p>
+        </div>
+        <ul class="plan-features">
+          <li class="feat feat-yes">Projetos ilimitados</li>
+          <li class="feat feat-yes">100 GB de armazenamento</li>
+          <li class="feat feat-yes">10 colaboradores</li>
+          <li class="feat feat-yes">Suporte prioritário</li>
+          <li class="feat feat-yes">Analytics avançado</li>
+          <li class="feat feat-yes">Acesso à API</li>
+          <li class="feat feat-no">SSO / SAML</li>
+        </ul>
+        <button class="plan-btn plan-btn--featured">Assinar Pro</button>
+      </div>
+
+      <div class="plan-card" data-plan="enterprise">
+        <div class="plan-top">
+          <span class="plan-name">Enterprise</span>
+          <div class="plan-price">
+            <span class="price-currency">R$</span>
+            <span class="price-amount" data-monthly="499" data-annual="399">499</span>
+            <span class="price-period">/mês</span>
+          </div>
+          <p class="plan-desc">Para grandes organizações e compliance.</p>
+        </div>
+        <ul class="plan-features">
+          <li class="feat feat-yes">Tudo do Pro</li>
+          <li class="feat feat-yes">Armazenamento ilimitado</li>
+          <li class="feat feat-yes">Colaboradores ilimitados</li>
+          <li class="feat feat-yes">SLA 99,9%</li>
+          <li class="feat feat-yes">Analytics avançado</li>
+          <li class="feat feat-yes">Acesso à API</li>
+          <li class="feat feat-yes">SSO / SAML</li>
+        </ul>
+        <button class="plan-btn">Falar com Vendas</button>
+      </div>
+
+    </div>
+
+    <p class="pricing-footnote">
+      Todos os planos incluem 14 dias de teste gratuito. Sem necessidade de cartão de crédito.
+    </p>
+
+  </div>
+
+  <script src="exercicio_20.js"></script>
 </body>
 </html>

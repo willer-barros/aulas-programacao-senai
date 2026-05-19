@@ -1,0 +1,406 @@
+/* =========================================
+   Exercício 20 — Pricing Plans
+   Tema: Dark editorial / CSS Grid
+   ========================================= */
+
+:root {
+  --bg:          #0c0c0c;
+  --bg-card:     #111111;
+  --bg-feat:     #13120e;
+  --accent:      #c9a96e;
+  --accent-rgb:  201, 169, 110;
+  --accent-dim:  rgba(201, 169, 110, 0.08);
+  --white:       #f2f2f2;
+  --text:        #c8c8c8;
+  --muted:       #606060;
+  --border:      rgba(255, 255, 255, 0.08);
+  --border-feat: rgba(201, 169, 110, 0.4);
+  --check-color: #5cb88a;
+  --radius:      8px;
+  --ease:        cubic-bezier(0.4, 0, 0.2, 1);
+  --dur:         0.3s;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+button { cursor: pointer; font: inherit; }
+
+/* =========================================
+   PAGE
+   ========================================= */
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 32px;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+.pricing-header {
+  text-align: center;
+  margin-bottom: 56px;
+  animation: fadeInDown 0.7s var(--ease) both;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.pricing-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.pricing-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  max-width: 460px;
+  margin: 0 auto 36px;
+}
+
+/* --- Toggle --- */
+.billing-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toggle-label {
+  font-size: 0.82rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+
+.toggle-label.is-active { color: var(--white); }
+
+.discount-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #0c0c0c;
+  background: var(--accent);
+  border-radius: 100px;
+  padding: 2px 7px;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: #222;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0;
+  transition: background 0.25s, border-color 0.25s;
+}
+
+.toggle-switch[aria-checked="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  background: var(--white);
+  border-radius: 50%;
+  transition: transform 0.25s var(--ease);
+  pointer-events: none;
+}
+
+.toggle-switch[aria-checked="true"] .toggle-thumb {
+  transform: translateX(20px);
+  background: #0c0c0c;
+}
+
+/* =========================================
+   PRICING GRID — Conceito do exercício
+   grid-template-columns, gap
+   ========================================= */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+  animation: fadeIn 0.5s 0.1s ease both;
+}
+
+/* =========================================
+   PLAN CARD
+   ========================================= */
+.plan-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  position: relative;
+  transition:
+    transform    var(--dur) var(--ease),
+    box-shadow   var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+  animation: riseIn 0.55s var(--ease) both;
+}
+
+.plan-card:nth-child(1) { animation-delay: 0.10s; }
+.plan-card:nth-child(2) { animation-delay: 0.18s; }
+.plan-card:nth-child(3) { animation-delay: 0.26s; }
+
+.plan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* Card central em destaque — seletor específico de grid */
+.plan-card.is-featured {
+  background: var(--bg-feat);
+  border-color: var(--border-feat);
+  box-shadow:
+    0 0 0 1px rgba(var(--accent-rgb), 0.2),
+    0 24px 64px rgba(0, 0, 0, 0.5);
+  transform: translateY(-8px);
+}
+
+.plan-card.is-featured:hover {
+  transform: translateY(-12px);
+  box-shadow:
+    0 0 0 1px rgba(var(--accent-rgb), 0.3),
+    0 32px 72px rgba(0, 0, 0, 0.6);
+}
+
+.plan-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #0c0c0c;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+/* =========================================
+   PLAN HEADER
+   ========================================= */
+.plan-top {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.plan-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.is-featured .plan-name { color: var(--accent); }
+
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  line-height: 1;
+}
+
+.price-currency {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  align-self: flex-start;
+  margin-top: 6px;
+}
+
+.price-amount {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--white);
+  font-variant-numeric: tabular-nums;
+  transition: opacity 0.15s ease;
+}
+
+.price-amount.is-changing { opacity: 0; }
+
+.price-period {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-left: 2px;
+}
+
+.plan-desc {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* =========================================
+   FEATURE LIST
+   ========================================= */
+.plan-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.feat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+}
+
+.feat::before {
+  content: '';
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.feat-yes { color: var(--text); }
+
+.feat-yes::before {
+  background-color: rgba(92, 184, 138, 0.15);
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.5 5l2.5 2.5 4.5-4.5' stroke='%235cb88a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.feat-no { color: var(--muted); }
+
+.feat-no::before {
+  background-color: rgba(255, 255, 255, 0.04);
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.5 7.5l5-5M7.5 7.5l-5-5' stroke='%23555' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+/* =========================================
+   PLAN BUTTON
+   ========================================= */
+.plan-btn {
+  width: 100%;
+  padding: 12px 20px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition:
+    background   var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    color        var(--dur) var(--ease),
+    transform    0.2s       var(--ease);
+}
+
+.plan-btn:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+.plan-btn--featured {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0c0c0c;
+  font-weight: 600;
+}
+
+.plan-btn--featured:hover {
+  background: #d4b47e;
+  border-color: #d4b47e;
+  color: #0c0c0c;
+}
+
+/* =========================================
+   FOOTNOTE
+   ========================================= */
+.pricing-footnote {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 40px;
+  letter-spacing: 0.02em;
+}
+
+/* =========================================
+   KEYFRAMES
+   ========================================= */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(28px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 900px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .plan-card.is-featured {
+    transform: translateY(0);
+    order: -1;
+  }
+
+  .plan-card.is-featured:hover { transform: translateY(-4px); }
+}
+
+@media (max-width: 480px) {
+  .page { padding: 60px 20px; }
+}

@@ -1,17 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercicio 17</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria Visual — Exercício 17</title>
+  <link rel="stylesheet" href="style_17.css">
 </head>
 <body>
-    <ul>
-        <li><strong>Objetivo:</strong> Criar uma fileira de imagens que se ajusta ao tamanho da tela.</li>
-        <li><strong>HTML:</strong> Uma section (container) contendo 5 divs quadradas com cores de fundo diferentes representando fotos.</li>
-        <li><strong>CSS:</strong> Usar display: flex no container, permitir que as fotos quebrem de linha (flex-wrap) e adicionar um espaçamento (gap) entre elas.</li>
-        <li><strong>Conceito chave:</strong> Flex-direction, flex-wrap e alinhamento de itens.</li>
-    </ul>
-   
+
+  <div class="wrapper">
+
+    <header class="site-header">
+      <span class="eyebrow">Coleção 2026</span>
+      <h1 class="site-title">Galeria Visual</h1>
+      <p class="site-desc">Uma curadoria de imagens capturadas ao redor do mundo.</p>
+    </header>
+
+    <nav class="filter-nav" role="navigation" aria-label="Filtrar por categoria">
+      <button class="filter-btn active" data-filter="all">
+        Todos <span class="badge">10</span>
+      </button>
+      <button class="filter-btn" data-filter="arquitetura">
+        Arquitetura <span class="badge">2</span>
+      </button>
+      <button class="filter-btn" data-filter="natureza">
+        Natureza <span class="badge">2</span>
+      </button>
+      <button class="filter-btn" data-filter="retrato">
+        Retratos <span class="badge">2</span>
+      </button>
+      <button class="filter-btn" data-filter="urbano">
+        Urbano <span class="badge">2</span>
+      </button>
+      <button class="filter-btn" data-filter="abstrato">
+        Abstrato <span class="badge">2</span>
+      </button>
+    </nav>
+
+    <main>
+      <section class="gallery" id="gallery">
+
+        <article class="card" data-category="arquitetura" data-title="Torres Modernas" data-author="Andrea Costa">
+          <div class="card-inner">
+            <img src="https://picsum.photos/seed/arch01/600/600" alt="Torres Modernas" loading="lazy">
+            <div class="card-overlay">
+              <span class="card-tag">Arquitetura</span>
+              <h2 class="card-name">Torres Modernas</h2>
+              <p class="card-by">Por Andrea Costa</p>
+              <span class="card-cta">Ver →</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-category="arquitetura" data-title="Linhas e Formas" data-author="Gabi Torres">
+          <div class="card-inner">
+            <img src="https://picsum.photos/seed/arch02/600/600" alt="Linhas e Formas" loading="lazy">
+            <div class="card-overlay">
+              <span class="card-tag">Arquitetura</span>
+              <h2 class="card-name">Linhas e Formas</h2>
+              <p class="card-by">Por Gabi Torres</p>
+              <span class="card-cta">Ver →</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-category="natureza" data-title="Floresta Atlântica" data-author="Bruno Melo">
+          <div class="card-inner">
+            <img src="https://picsum.photos/seed/nat01/600/600" alt="Floresta Atlântica" loading="lazy">
+            <div class="card-overlay">
+              <span class="card-tag">Natureza</span>
+              <h2 class="card-name">Floresta Atlântica</h2>
+              <p class="card-by">Por Bruno Melo</p>
+              <span class="card-cta">Ver →</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-category="natureza" data-title="Mar Profundo" data-author="Fábio Lima">
+          <div class="card-inner">
+            <img src="https://picsum.photos/seed/nat02/600/600" alt="Mar Profundo" loading="lazy">
+            <div class="card-overlay">
+              <span class="card-tag">Natureza</span>
+              <h2 class="card-name">Mar Profundo</h2>
+              <p class="card-by">Por Fábio Lima</p>
+              <span class="card-cta">Ver →</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-category="retrato" data-title="Luz de Outono" data-author="Carla Nunes">
+          <div class="card-inner">
+            <img src="https://picsum.photos/seed/port01/600/600" alt="Luz de Outono" loading="lazy">
+            <div class="card-overlay">
+              <span class="card-tag">Retrato</span>
+              <h2 class="card-name">Luz de Outono</h2>
+              <p class="card-by">Por Carla Nunes</p>
+              <span class="card-cta">Ver →</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-category="retrato" data-title="Silhuetas" data-author="Isabel Ferreira">
+          <div class="card-inner">
+            <img src="https://picsum.photos/seed/port02/600/600" alt="Silhuetas" loading="lazy">
+            <div class="card-overlay">
+              <span class="card-tag">Retrato</span>
+              <h2 class="card-name">Silhuetas</h2>
+              <p class="card-by">Por Isabel Ferreira</p>
+              <span class="card-cta">Ver →</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-category="urbano" data-title="Metrópole" data-author="Diego Ramos">
+          <div class="card-inner">
+            <img src="https://picsum.photos/seed/urb01/600/600" alt="Metrópole" loading="lazy">
+            <div class="card-overlay">
+              <span class="card-tag">Urbano</span>
+              <h2 class="card-name">Metrópole</h2>
+              <p class="card-by">Por Diego Ramos</p>
+              <span class="card-cta">Ver →</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-category="urbano" data-title="Noite Urbana" data-author="Henrique Dias">
+          <div class="card-inner">
+            <img src="https://picsum.photos/seed/urb02/600/600" alt="Noite Urbana" loading="lazy">
+            <div class="card-overlay">
+              <span class="card-tag">Urbano</span>
+              <h2 class="card-name">Noite Urbana</h2>
+              <p class="card-by">Por Henrique Dias</p>
+              <span class="card-cta">Ver →</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-category="abstrato" data-title="Fragmentos" data-author="Elena Souza">
+          <div class="card-inner">
+            <img src="https://picsum.photos/seed/abs01/600/600" alt="Fragmentos" loading="lazy">
+            <div class="card-overlay">
+              <span class="card-tag">Abstrato</span>
+              <h2 class="card-name">Fragmentos</h2>
+              <p class="card-by">Por Elena Souza</p>
+              <span class="card-cta">Ver →</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-category="abstrato" data-title="Dimensões" data-author="João Alves">
+          <div class="card-inner">
+            <img src="https://picsum.photos/seed/abs02/600/600" alt="Dimensões" loading="lazy">
+            <div class="card-overlay">
+              <span class="card-tag">Abstrato</span>
+              <h2 class="card-name">Dimensões</h2>
+              <p class="card-by">Por João Alves</p>
+              <span class="card-cta">Ver →</span>
+            </div>
+          </div>
+        </article>
+
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span><span id="visible-count">10</span> obras exibidas</span>
+    </footer>
+
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizador de imagem">
+    <button class="lb-close" id="lb-close" aria-label="Fechar">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M1 1l14 14M15 1L1 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <button class="lb-nav lb-prev" id="lb-prev" aria-label="Anterior">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button class="lb-nav lb-next" id="lb-next" aria-label="Próximo">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="lb-content">
+      <div class="lb-img-wrap">
+        <img id="lb-img" src="" alt="">
+      </div>
+      <div class="lb-info">
+        <span class="lb-tag" id="lb-tag"></span>
+        <h2 class="lb-title" id="lb-title"></h2>
+        <p class="lb-author" id="lb-author"></p>
+        <div class="lb-counter">
+          <span id="lb-current">1</span> / <span id="lb-total">10</span>
+        </div>
+      </div>
+    </div>
+    <div class="lb-backdrop" id="lb-backdrop"></div>
+  </div>
+
+  <script src="exercicio_17.js"></script>
 </body>
 </html>

@@ -1,0 +1,326 @@
+/* =========================================
+   Exercício 19 — Formulário de Contato
+   Tema: Dark editorial / floating labels
+   ========================================= */
+
+:root {
+  --bg:          #0c0c0c;
+  --bg-input:    #181818;
+  --accent:      #c9a96e;
+  --accent-rgb:  201, 169, 110;
+  --error:       #e05c5c;
+  --success:     #5cb88a;
+  --success-rgb: 92, 184, 138;
+  --white:       #f2f2f2;
+  --text:        #c8c8c8;
+  --muted:       #606060;
+  --border:      rgba(255, 255, 255, 0.1);
+  --radius:      6px;
+  --ease:        cubic-bezier(0.4, 0, 0.2, 1);
+  --dur:         0.25s;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  -webkit-font-smoothing: antialiased;
+}
+
+button { cursor: pointer; font: inherit; }
+
+/* =========================================
+   FORM CONTAINER
+   ========================================= */
+.page { width: 100%; display: flex; justify-content: center; }
+
+.form-wrap {
+  width: 100%;
+  max-width: 560px;
+  animation: fadeInUp 0.7s var(--ease) both;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+.eyebrow {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.form-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.form-desc {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+/* =========================================
+   FORM
+   ========================================= */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* =========================================
+   FIELD — Floating Label (conceito do exercício)
+   Usa :placeholder-shown para detectar campo vazio
+   ========================================= */
+.field { position: relative; }
+
+/* Input & Textarea */
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 22px 16px 8px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--white);
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  resize: none;
+  transition:
+    border-color var(--dur) var(--ease),
+    box-shadow   var(--dur) var(--ease);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.field textarea {
+  line-height: 1.6;
+  padding-top: 26px;
+}
+
+/* Label flutuante */
+.field label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  color: var(--muted);
+  pointer-events: none;
+  transition:
+    top          var(--dur) var(--ease),
+    transform    var(--dur) var(--ease),
+    font-size    var(--dur) var(--ease),
+    color        var(--dur) var(--ease),
+    letter-spacing var(--dur) var(--ease);
+}
+
+.field:has(textarea) label {
+  top: 22px;
+  transform: none;
+}
+
+/* :placeholder-shown + :focus — conceito chave do exercício */
+.field input:not(:placeholder-shown) ~ label,
+.field input:focus ~ label {
+  top: 8px;
+  transform: none;
+  font-size: 0.68rem;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+
+.field textarea:not(:placeholder-shown) ~ label,
+.field textarea:focus ~ label {
+  top: 8px;
+  font-size: 0.68rem;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+
+/* :focus — conceito chave do exercício */
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.12);
+}
+
+/* Estado de erro */
+.field.has-error input,
+.field.has-error textarea {
+  border-color: var(--error);
+  box-shadow: 0 0 0 3px rgba(224, 92, 92, 0.1);
+}
+
+.field.has-error label { color: var(--error) !important; }
+
+.field-error {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--error);
+  margin-top: 6px;
+  padding-left: 2px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none;
+}
+
+.field.has-error .field-error {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   SUBMIT — :hover conceito do exercício
+   ========================================= */
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 24px;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius);
+  color: #0c0c0c;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition:
+    background  0.25s var(--ease),
+    transform   0.2s  var(--ease),
+    box-shadow  0.25s var(--ease),
+    gap         0.25s var(--ease);
+}
+
+/* :hover — conceito chave do exercício */
+.submit-btn:hover {
+  background: #d4b47e;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(var(--accent-rgb), 0.25);
+  gap: 14px;
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn-icon { transition: transform 0.25s var(--ease); flex-shrink: 0; }
+.submit-btn:hover .btn-icon { transform: translateX(3px); }
+
+/* Loading */
+.btn-spinner { display: none; animation: spin 0.7s linear infinite; }
+.submit-btn.is-loading .btn-text,
+.submit-btn.is-loading .btn-icon { display: none; }
+.submit-btn.is-loading .btn-spinner { display: block; }
+.submit-btn.is-loading { background: #444; pointer-events: none; color: #888; }
+
+/* =========================================
+   SUCCESS STATE
+   ========================================= */
+.form-success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48px 0;
+  animation: fadeInUp 0.5s var(--ease) both;
+}
+
+.form-success.is-visible { display: flex; }
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(var(--success-rgb), 0.12);
+  border: 1px solid rgba(var(--success-rgb), 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--success);
+  margin-bottom: 24px;
+  animation: popIn 0.4s 0.1s var(--ease) both;
+}
+
+.success-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.success-desc {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+.reset-btn {
+  padding: 9px 20px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.reset-btn:hover {
+  color: var(--accent);
+  border-color: rgba(var(--accent-rgb), 0.4);
+}
+
+/* =========================================
+   KEYFRAMES
+   ========================================= */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.7); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 520px) {
+  .field-row { grid-template-columns: 1fr; }
+}
