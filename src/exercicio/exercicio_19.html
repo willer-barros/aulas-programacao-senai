@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicio 19</title>
+    <link rel="stylesheet" href="exercicio_19.css">
 </head>
 <body>
     <ul>
@@ -11,6 +12,22 @@
     <li><strong>HTML:</strong> Um formulário com inputs para Nome, E-mail e uma tag textarea para a mensagem, finalizando com um botão.</li>
     <li><strong>CSS:</strong> Remover as bordas padrão dos inputs, adicionar uma borda colorida apenas ao clicar (focus) e mudar a cor do botão ao passar o mouse (hover).</li>
     <li><strong>Conceito chave:</strong> Pseudo-classes (:hover, :focus), estilização de inputs e transições suaves.</li>
-</ul>
+    </ul>
+
+    <!-- Formulário de contato -->
+    <main>
+        <form class="contact-form" action="#" method="post" novalidate>
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" placeholder="Seu nome" required>
+
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" placeholder="seu@exemplo.com" required>
+
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="6" placeholder="Escreva sua mensagem..." required></textarea>
+
+            <button type="submit" class="btn-submit">Enviar mensagem</button>
+        </form>
+    </main>
 </body>
 </html>

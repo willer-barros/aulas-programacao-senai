@@ -1,20 +1,42 @@
-// API de Catálogo de Filmes com Filtros (Query Params)
-// Objetivo: Aprender a capturar parâmetros de busca na URL utilizando req.query.
+const express = require('express');
+const app = express();
+app.use(express.json());
 
-// Estrutura do Objeto: { id: 1, titulo: "Inception", genero: "Ficção", ano: 2010 }
+// povoamento inicial com 6 filmes variados
+const filmes = [
+    { id: 1, titulo: "Inception", genero: "Ficção", ano: 2010 },
+    { id: 2, titulo: "O Poderoso Chefão", genero: "Drama", ano: 1972 },
+    { id: 3, titulo: "Matrix", genero: "Ficção", ano: 1999 },
+    { id: 4, titulo: "Toy Story", genero: "Animação", ano: 1995 },
+    { id: 5, titulo: "Parasita", genero: "Suspense", ano: 2019 },
+    { id: 6, titulo: "Interstellar", genero: "Ficção", ano: 2014 }
+];
 
-// Povoamento: Inicie o array com pelo menos 5 filmes de gêneros e anos diferentes.
+// GET /filmes: retorna todos ou aplica filtros via query params
+app.get('/filmes', (req, res) => {
+    let resultados = filmes;
 
-// Endpoints a criar:
+    const { genero, ano } = req.query;
 
-// GET /filmes: Este endpoint deve ser inteligente.
+    if (genero) {
+        const generoLower = String(genero).toLowerCase();
+        resultados = resultados.filter(f => String(f.genero).toLowerCase() === generoLower);
+    }
 
-// Se o usuário acessar /filmes, retorna todos.
+    if (ano) {
+        const anoNum = Number(ano);
+        if (!Number.isNaN(anoNum)) {
+            resultados = resultados.filter(f => f.ano === anoNum);
+        } else {
+            return res.status(400).json({ erro: 'Ano inválido' });
+        }
+    }
 
-// Se o usuário acessar /filmes?genero=Ficção, deve retornar apenas os filmes desse gênero.
+    res.json(resultados);
+});
 
-// Se acessar /filmes?ano=2010, retorna apenas os daquele ano.
-
-//Testar via postman
-
-// Desafio Técnico: Use o método .filter() do JavaScript para aplicar os filtros dinamicamente caso as variáveis cheguem através do req.query.
+// inicializa servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`API de filmes rodando em http://localhost:${PORT}`);
+});

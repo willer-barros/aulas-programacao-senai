@@ -1,0 +1,86 @@
+/* Reset simples */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f6f7fb;
+    color: #222;
+    padding: 20px;
+}
+
+/* Formulário centralizado e legível */
+.contact-form {
+    max-width: 600px;
+    margin: 18px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(18, 38, 63, 0.06);
+    display: grid;
+    gap: 12px;
+}
+
+/* Labels */
+.contact-form label {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+/* Inputs e textarea: sem borda padrão, com fundo suave */
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid transparent;   /* remove aparência padrão */
+    background: #f3f5f8;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #111;
+    transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    outline: none;
+}
+
+/* Estado focus: borda colorida e sombra sutil */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #3b82f6; /* azul visível ao focar */
+    box-shadow: 0 4px 12px rgba(59,130,246,0.12);
+    background: #fff;
+}
+
+/* Acessibilidade: visible focus para teclado */
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible {
+    outline: 2px solid rgba(59,130,246,0.12);
+    outline-offset: 2px;
+}
+
+/* Botão com transição e hover */
+.btn-submit {
+    cursor: pointer;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    background: #10b981; /* verde */
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background 160ms ease, transform 120ms ease, box-shadow 160ms ease;
+    align-self: start;
+}
+
+/* Hover e active do botão */
+.btn-submit:hover {
+    background: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(5,150,105,0.12);
+}
+.btn-submit:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Pequenos ajustes responsivos */
+@media (max-width: 480px) {
+    .contact-form { padding: 16px; gap: 10px; }
+}

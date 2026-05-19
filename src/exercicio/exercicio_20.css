@@ -1,0 +1,84 @@
+/* Reset simples */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f8fafc;
+    color: #222;
+    padding: 18px;
+}
+
+/* Lista de instruções */
+ul { margin-bottom: 16px; line-height: 1.4; }
+
+/* Grid responsivo: auto-fit com minmax cria colunas que se ajustam */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 8px;
+}
+
+/* Estilo do card */
+.card {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+    display: flex;
+    flex-direction: column;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+/* Imagem/área visual do card (aqui apenas cor de fundo) */
+.card-media {
+    height: 140px;
+    background: linear-gradient(135deg, #e2e8f0, #c7d2fe);
+}
+
+/* Conteúdo do card */
+.card-title {
+    font-size: 1.05rem;
+    margin: 12px 16px 6px;
+    color: #0f172a;
+}
+.card-body {
+    margin: 0 16px 12px;
+    color: #475569;
+    font-size: 0.95rem;
+    flex: 1 0 auto;
+}
+
+/* Botão do card */
+.card-btn {
+    margin: 0 16px 16px;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 140ms ease, transform 120ms ease, box-shadow 140ms ease;
+    align-self: start;
+}
+
+/* Hover no card e no botão */
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(15,23,42,0.12);
+}
+.card-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(29,78,216,0.12);
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 420px) {
+    .card-media { height: 120px; }
+    .card-title { font-size: 1rem; }
+    .card-body { font-size: 0.92rem; }
+}

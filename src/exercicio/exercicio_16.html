@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercicio 16</title>
+    <title>Exercício 16 - Card de Perfil</title>
+    <link rel="stylesheet" href="exercicio_16.css">
 </head>
 <body>
-    <ul>
-    <li><strong>Objetivo:</strong> Criar um card de perfil simples.</li>
-    <li><strong>HTML:</strong> Uma div contendo uma imagem circular, um h2 para o nome e um (p) para a biografia.</li>
-    <li><strong>CSS:</strong> Definir largura fixa para o card, centralizá-lo na tela, adicionar um border-radius: 50% na imagem e uma sombra leve (box-shadow) no card.</li>
-    <li><strong>Conceito chave:</strong> Margens, preenchimentos (padding) e bordas.</li>
-</ul>
-   
+    <div class="card" role="region" aria-label="Card de perfil">
+        <img class="avatar" src="https://via.placeholder.com/300" alt="Foto de perfil de Nome Sobrenome">
+        <h2>Nome Sobrenome</h2>
+        <p class="bio">Desenvolvedor(a) web com foco em front-end. Gosta de criar interfaces simples e acessíveis.</p>
+        <div class="meta">
+            <span class="badge">Front‑end</span>
+            <span>São Paulo, BR</span>
+        </div>
+    </div>
 </body>
 </html>

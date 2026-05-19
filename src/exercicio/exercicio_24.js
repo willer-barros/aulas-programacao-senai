@@ -1,18 +1,68 @@
-// API de Sistema de Pedidos (Relacionamento de Dados)
-// Objetivo: Simular como uma API lida com tabelas/entidades relacionadas (Ex: Clientes e Pedidos).
+const express = require('express');
+const app = express();
+app.use(express.json());
 
-// Estrutura dos Dados: Você terá dois arrays separados: clientes e pedidos.
+// armazenamento em memória
+const clientes = [
+    { id: 1, nome: "Carlos" },
+    { id: 2, nome: "Mariana" },
+    { id: 3, nome: "João" }
+];
 
-// Cliente: { id: 1, nome: "Carlos" }
+const pedidos = [];
+let nextPedidoId = 1;
 
-// Pedido: { id: 101, clienteId: 1, produto: "Teclado Mecânico", valor: 250.00 } (Note que clienteId amarra o pedido ao Carlos).
+// POST /pedidos: cria um pedido após validar clienteId
+app.post('/pedidos', (req, res) => {
+    const { clienteId, produto, valor } = req.body;
 
-// Endpoints a criar:
+    if (clienteId === undefined || produto === undefined || valor === undefined) {
+        return res.status(400).json({ erro: 'Campos obrigatórios: clienteId, produto, valor' });
+    }
 
-// POST /pedidos: Cria um pedido.
+    const clienteExiste = clientes.some(c => c.id === Number(clienteId));
+    if (!clienteExiste) {
+        return res.status(400).json({ erro: 'Cliente inexistente' });
+    }
 
-//Testar via POSTMAN
+    if (typeof produto !== 'string' || !produto.trim()) {
+        return res.status(400).json({ erro: 'Produto inválido' });
+    }
 
-// Validação Crítica: Antes de dar o push no array de pedidos, sua API precisa verificar se o clienteId enviado realmente existe no array de clientes. Se não existir, barre a criação com o status 400 ("Cliente inexistente").
+    const valorNum = Number(valor);
+    if (Number.isNaN(valorNum) || valorNum <= 0) {
+        return res.status(400).json({ erro: 'Valor inválido' });
+    }
 
-// GET /clientes/:id/pedidos: Retorna apenas os pedidos daquele cliente específico.
+    const pedido = {
+        id: nextPedidoId++,
+        clienteId: Number(clienteId),
+        produto: produto.trim(),
+        valor: valorNum
+    };
+
+    pedidos.push(pedido);
+    res.status(201).json(pedido);
+});
+
+// GET /clientes/:id/pedidos: retorna pedidos do cliente específico
+app.get('/clientes/:id/pedidos', (req, res) => {
+    const clienteId = Number(req.params.id);
+    const cliente = clientes.find(c => c.id === clienteId);
+    if (!cliente) {
+        return res.status(404).json({ erro: 'Cliente não encontrado' });
+    }
+
+    const pedidosDoCliente = pedidos.filter(p => p.clienteId === clienteId);
+    res.json(pedidosDoCliente);
+});
+
+// endpoints auxiliares (opcionais) para facilitar testes
+app.get('/clientes', (req, res) => res.json(clientes));
+app.get('/pedidos', (req, res) => res.json(pedidos));
+
+// inicializa servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`API de pedidos rodando em http://localhost:${PORT}`);
+});

@@ -1,0 +1,68 @@
+/* Reset simples */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background: #f7f7f7;
+    color: #222;
+    padding: 20px;
+    line-height: 1.45;
+}
+
+/* Instruções (lista) mantém-se visível acima do conteúdo */
+ul { margin-bottom: 18px; }
+
+/* Cabeçalho do conteúdo */
+.site-header {
+    text-align: center;
+    margin-bottom: 18px;
+}
+.site-header .lead {
+    color: #555;
+    margin-top: 6px;
+    font-size: 0.95rem;
+}
+
+/* Bloco de texto centralizado e legível */
+.text-block {
+    max-width: 720px;       /* largura máxima para leitura confortável */
+    margin: 0 auto 24px;    /* centraliza o bloco */
+    background: #fff;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    line-height: 1.7;       /* melhora leitura de parágrafos longos */
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Títulos com hierarquia visual */
+.text-block h2 {
+    margin-top: 18px;
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+    color: #1f2937;
+}
+
+/* Parágrafos com espaçamento */
+.text-block p {
+    margin-bottom: 12px;
+    text-align: justify;
+}
+
+/* Rodapé simples */
+.site-footer {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 600px) {
+    .text-block {
+        padding: 18px;
+        margin: 0 12px 18px;
+        font-size: 0.98rem;
+    }
+    .text-block h2 { font-size: 1.1rem; }
+}

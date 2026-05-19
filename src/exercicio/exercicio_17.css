@@ -1,0 +1,48 @@
+/* Reset simples */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 16px;
+    background: #fafafa;
+    color: #222;
+}
+
+/* Espaçamento para a lista de instruções */
+ul { margin-bottom: 16px; line-height: 1.5; }
+
+/* Container flex que organiza as "fotos" */
+.photo-row {
+    display: flex;
+    flex-wrap: wrap;            /* permite quebra de linha quando necessário */
+    gap: 16px;                  /* espaçamento entre as fotos */
+    justify-content: center;    /* centraliza a fileira */
+    padding: 8px 0;
+}
+
+/* Cada "foto" é quadrada e responsiva:
+   - tenta 5 itens por linha em telas grandes
+   - min-width evita que fiquem muito pequenas em telas estreitas
+   - aspect-ratio garante que sejam quadradas */
+.photo {
+    flex: 1 1 calc(20% - 16px);
+    min-width: 120px;
+    max-width: 220px;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Cores diferentes para cada "foto" (representação visual) */
+.photo:nth-child(1) { background-color: #f25f5c; }
+.photo:nth-child(2) { background-color: #ffb400; }
+.photo:nth-child(3) { background-color: #7bd389; }
+.photo:nth-child(4) { background-color: #4aa0ff; }
+.photo:nth-child(5) { background-color: #9b8cff; }
+
+/* Ajuste fino para telas menores: 2 por linha em dispositivos muito estreitos */
+@media (max-width: 480px) {
+    .photo { flex: 1 1 calc(50% - 16px); min-width: 100px; }
+}

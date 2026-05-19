@@ -1,16 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicio 20</title>
+    <link rel="stylesheet" href="exercicio_20.css">
 </head>
 <body>
     <ul>
-    <li><strong>Objetivo:</strong> Criar três colunas comparativas de planos.</li>
-    <li><strong>HTML:</strong> Três divs principais (cards), cada uma com o nome do plano, uma lista (ul) de benefícios e o valor.</li>
-    <li><strong>CSS:</strong> Usar display: grid com três colunas de tamanhos iguais. Adicionar um destaque (como uma cor de borda diferente) apenas no card central.</li>
-    <li><strong>Conceito chave:</strong> Grid-template-columns, gap e seletores específicos de grid.</li>
-</ul>
+        <li><strong>Objetivo:</strong> Criar uma grade de cards responsiva usando CSS Grid.</li>
+        <li><strong>HTML:</strong> Uma section com vários artigos (cards) contendo imagem, título, texto e um botão.</li>
+        <li><strong>CSS:</strong> Usar display: grid, definir colunas responsivas com auto-fit/minmax, estilizar cartões e adicionar hover/transition.</li>
+        <li><strong>Conceito chave:</strong> CSS Grid, auto-fit/minmax, gaps e transições.</li>
+    </ul>
+
+    <main>
+        <section class="card-grid" aria-label="grade de cards">
+            <article class="card">
+                <div class="card-media" aria-hidden="true"></div>
+                <h3 class="card-title">Card 1</h3>
+                <p class="card-body">Descrição breve do conteúdo do card. Texto de exemplo para preencher o espaço.</p>
+                <button class="card-btn">Ler mais</button>
+            </article>
+
+            <article class="card">
+                <div class="card-media" aria-hidden="true"></div>
+                <h3 class="card-title">Card 2</h3>
+                <p class="card-body">Descrição breve do conteúdo do card. Texto de exemplo para preencher o espaço.</p>
+                <button class="card-btn">Ler mais</button>
+            </article>
+
+            <article class="card">
+                <div class="card-media" aria-hidden="true"></div>
+                <h3 class="card-title">Card 3</h3>
+                <p class="card-body">Descrição breve do conteúdo do card. Texto de exemplo para preencher o espaço.</p>
+                <button class="card-btn">Ler mais</button>
+            </article>
+
+            <article class="card">
+                <div class="card-media" aria-hidden="true"></div>
+                <h3 class="card-title">Card 4</h3>
+                <p class="card-body">Descrição breve do conteúdo do card. Texto de exemplo para preencher o espaço.</p>
+                <button class="card-btn">Ler mais</button>
+            </article>
+
+            <article class="card">
+                <div class="card-media" aria-hidden="true"></div>
+                <h3 class="card-title">Card 5</h3>
+                <p class="card-body">Descrição breve do conteúdo do card. Texto de exemplo para preencher o espaço.</p>
+                <button class="card-btn">Ler mais</button>
+            </article>
+
+            <article class="card">
+                <div class="card-media" aria-hidden="true"></div>
+                <h3 class="card-title">Card 6</h3>
+                <p class="card-body">Descrição breve do conteúdo do card. Texto de exemplo para preencher o espaço.</p>
+                <button class="card-btn">Ler mais</button>
+            </article>
+        </section>
+    </main>
 </body>
 </html>

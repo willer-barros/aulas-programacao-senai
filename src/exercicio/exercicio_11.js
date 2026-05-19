@@ -3,3 +3,8 @@
 
 // Cria um array vazio para representar a fila
 const clinica = [];
+
+// Adiciona animais à fila usando push()
+clinica.push("Cachorro");
+clinica.push("Gato");
+clinica.push("Coelho");
