@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 17</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .galeria-container {
+            display: flex;            
+            flex-direction: row;    
+            flex-wrap: wrap;           
+            justify-content: center;   
+            gap: 20px;                 
+            max-width: 1000px;         
+            margin: 0 auto;            
+        }
+
+        .foto {
+            width: 150px;             
+            height: 150px;            
+            border-radius: 8px;      
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+        }
+
+        .foto-1 { background-color: #0011ff; } 
+        .foto-2 { background-color: #ff0000; }
+        .foto-3 { background-color: #ff00ea; } 
+        .foto-4 { background-color: #57f10f; }
+        .foto-5 { background-color: #7700ff; }
+    </style>
+</head>
+<body>
+
+    <h1>Minha Galeria Responsiva</h1>
+    
+    <section class="galeria-container">
+        <div class="foto foto-1">
+            <img src="foto/foto2.avif" alt="">
+        </div>
+        <div class="foto foto-2">
+            <img src="foto/foto3.jpg" alt="">
+        </div>
+        <div class="foto foto-3">
+            <img src="foto/foto4.jpg" alt="">
+        </div>
+        <div class="foto foto-4">
+            <img src="foto/fot5.jpg" alt="">
+        </div>
+        <div class="foto foto-5">
+            <img src="foto/foto6.jpg" alt="">
+        </div>
+    </section>
+
+</body>
+</html>
