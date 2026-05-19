@@ -1,17 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercicio 16</title>
+    <title>Exercício 16</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+        }
+
+        .card {
+            width: 250px;
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .card h2 {
+            margin: 10px 0 5px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
 </head>
+
 <body>
-    <ul>
-    <li><strong>Objetivo:</strong> Criar um card de perfil simples.</li>
-    <li><strong>HTML:</strong> Uma div contendo uma imagem circular, um h2 para o nome e um (p) para a biografia.</li>
-    <li><strong>CSS:</strong> Definir largura fixa para o card, centralizá-lo na tela, adicionar um border-radius: 50% na imagem e uma sombra leve (box-shadow) no card.</li>
-    <li><strong>Conceito chave:</strong> Margens, preenchimentos (padding) e bordas.</li>
-</ul>
-   
+
+    <div class="card">
+        <img src="I4VSYVj - Imgur.png" alt="Foto de perfil">
+        <h2>José Henrico</h2>
+        <p>Jogador caro, vai corinthians.</p>
+    </div>
+
 </body>
 </html>

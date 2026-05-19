@@ -1,17 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicio 17</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .galeria {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .foto {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+        }
+
+        .foto1 {
+            background-color: red;
+        }
+
+        .foto2 {
+            background-color: blue;
+        }
+
+        .foto3 {
+            background-color: green;
+        }
+
+        .foto4 {
+            background-color: orange;
+        }
+
+        .foto5 {
+            background-color: purple;
+        }
+    </style>
 </head>
+
 <body>
-    <ul>
-        <li><strong>Objetivo:</strong> Criar uma fileira de imagens que se ajusta ao tamanho da tela.</li>
-        <li><strong>HTML:</strong> Uma section (container) contendo 5 divs quadradas com cores de fundo diferentes representando fotos.</li>
-        <li><strong>CSS:</strong> Usar display: flex no container, permitir que as fotos quebrem de linha (flex-wrap) e adicionar um espaçamento (gap) entre elas.</li>
-        <li><strong>Conceito chave:</strong> Flex-direction, flex-wrap e alinhamento de itens.</li>
-    </ul>
-   
+
+    <div class="galeria">
+        <div class="foto foto1"></div>
+        <div class="foto foto2"></div>
+        <div class="foto foto3"></div>
+        <div class="foto foto4"></div>
+        <div class="foto foto5"></div>
+    </div>
+
 </body>
 </html>

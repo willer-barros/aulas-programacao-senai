@@ -1,16 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicio 19</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .formulario {
+            width: 400px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #eeeeee;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus,
+        textarea:focus {
+            border: 2px solid blue;
+            background-color: white;
+        }
+
+        textarea {
+            resize: none;
+            height: 120px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+    </style>
 </head>
+
 <body>
-    <ul>
-    <li><strong>Objetivo:</strong> Estilizar um formulário de mensagens.</li>
-    <li><strong>HTML:</strong> Um formulário com inputs para Nome, E-mail e uma tag textarea para a mensagem, finalizando com um botão.</li>
-    <li><strong>CSS:</strong> Remover as bordas padrão dos inputs, adicionar uma borda colorida apenas ao clicar (focus) e mudar a cor do botão ao passar o mouse (hover).</li>
-    <li><strong>Conceito chave:</strong> Pseudo-classes (:hover, :focus), estilização de inputs e transições suaves.</li>
-</ul>
+
+    <form class="formulario">
+
+        <h1>Contato</h1>
+
+        <input type="text" placeholder="Digite seu nome">
+
+        <input type="email" placeholder="Digite seu e-mail">
+
+        <textarea placeholder="Digite sua mensagem"></textarea>
+
+        <button type="submit">Enviar</button>
+
+    </form>
+
 </body>
 </html>

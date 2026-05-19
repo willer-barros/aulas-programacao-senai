@@ -1,16 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicio 20</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 40px;
+        }
+
+        .planos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #cccccc;
+        }
+
+        .destaque {
+            border: 3px solid blue;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        .preco {
+            font-size: 25px;
+            font-weight: bold;
+            color: blue;
+        }
+
+    </style>
 </head>
+
 <body>
-    <ul>
-    <li><strong>Objetivo:</strong> Criar três colunas comparativas de planos.</li>
-    <li><strong>HTML:</strong> Três divs principais (cards), cada uma com o nome do plano, uma lista (ul) de benefícios e o valor.</li>
-    <li><strong>CSS:</strong> Usar display: grid com três colunas de tamanhos iguais. Adicionar um destaque (como uma cor de borda diferente) apenas no card central.</li>
-    <li><strong>Conceito chave:</strong> Grid-template-columns, gap e seletores específicos de grid.</li>
-</ul>
+
+    <div class="planos">
+
+        <div class="card">
+            <h2>Plano Básico</h2>
+
+            <ul>
+                <li>1 Usuário</li>
+                <li>Suporte basilio</li>
+                <li>10GB</li>
+            </ul>
+
+            <p class="preco">R$ 29,90</p>
+        </div>
+
+        <div class="card destaque">
+            <h2>Plano Premium</h2>
+
+            <ul>
+                <li>5 Usuários</li>
+                <li>Suporte mais tempo</li>
+                <li>100GB</li>
+            </ul>
+
+            <p class="preco">R$ 79,90</p>
+        </div>
+
+        <div class="card">
+            <h2>Plano Empresarial</h2>
+
+            <ul>
+                <li>Usuários ilimitados</li>
+                <li>Suporte 24h</li>
+                <li>1TB</li>
+            </ul>
+
+            <p class="preco">R$ 149,50</p>
+        </div>
+
+    </div>
+
 </body>
 </html>
