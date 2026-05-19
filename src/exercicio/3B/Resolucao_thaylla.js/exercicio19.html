@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 19 </title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-contato {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-contato h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        .form-grupo {
+            margin-bottom: 15px;
+        }
+
+        .form-grupo label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666666;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .form-grupo input,
+        .form-grupo textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0; 
+            border-radius: 6px;
+            font-size: 16px;
+            color: #333333;
+            outline: none; 
+            box-sizing: border-box; 
+            transition: border-color 0.3s ease; 
+        }
+
+        .form-grupo textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+    
+        .form-grupo input:focus,
+        .form-grupo textarea:focus {
+            border-color: #3498db; 
+        }
+
+        .btn-enviar {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease; 
+        }
+
+        .btn-enviar:hover {
+            background-color: #2980b9; 
+        }
+    </style>
+</head>
+<body>
+
+    <form class="form-contato">
+        <h2>Envie uma Mensagem</h2>
+
+        <div class="form-grupo">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" placeholder="Digite seu nome" required>
+        </div>
+
+        <div class="form-grupo">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" placeholder="seu-email@dominio.com" required>
+        </div>
+
+        <div class="form-grupo">
+            <label for="mensagem">Mensagem:</label>
+            <textarea id="mensagem" placeholder="Escreva sua mensagem aqui..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-enviar">Enviar Mensagem</button>
+    </form>
+
+</body>
+</html>

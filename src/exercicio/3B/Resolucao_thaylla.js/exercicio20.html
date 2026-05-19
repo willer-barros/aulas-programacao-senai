@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 20</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 40px 20px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #502c47;
+        }
+
+        .subtitulo {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 40px;
+        }
+
+        .grid-planos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 25px; 
+            max-width: 1000px;
+            margin: 0 auto;
+            align-items: center; 
+        }
+
+        .card {
+            background-color: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #502c4a;
+            font-size: 1.5rem;
+        }
+
+        .preco {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #482d47;
+            margin: 20px 0;
+        }
+
+        .preco span {
+            font-size: 1rem;
+            color: #a0aec0;
+            font-weight: normal;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 30px 0;
+            text-align: left;
+        }
+
+        .card ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #edf2f7;
+            color: #5f4a68;
+            font-size: 0.95rem;
+        }
+
+        .card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .btn-plano {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #718096;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .btn-plano:hover {
+            background-color: #654a68;
+        }
+
+        .card-destaque {
+            border-color: #c931cec5; 
+            box-shadow: 0 10px 20px rgba(206, 49, 198, 0.15);
+            background-color: #ffffff;
+            position: relative;
+            transform: scale(1.03); 
+        }
+
+        .card-destaque:hover {
+            transform: scale(1.03) translateY(-5px);
+        }
+
+        .card-destaque h2 {
+            color: #ce31b9;
+        }
+
+        .card-destaque .btn-plano {
+            background-color: #9900ff;
+        }
+
+        .card-destaque .btn-plano:hover {
+            background-color: #ff00aa;
+        }
+
+
+        @media (max-width: 768px) {
+            .grid-planos {
+                grid-template-columns: 1fr;
+            }
+            .card-destaque {
+                transform: none; 
+            }
+            .card-destaque:hover {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Escolha o seu Plano</h1>
+    <p class="subtitulo">Preços transparentes que cabem no seu bolso</p>
+
+    <section class="grid-planos">
+        
+        <div class="card">
+            <h2>Basic</h2>
+            <div class="preco">R$ 29<span>/mês</span></div>
+            <ul>
+                <li> 1 Usuário cadastrado</li>
+                <li> 5GB de Armazenamento</li>
+                <li> Suporte por e-mail</li>
+            </ul>
+            <a href="#" class="btn-plano">Começar Agora</a>
+        </div>
+
+        <div class="card card-destaque">
+            <h2>Standard</h2>
+            <div class="preco">R$ 59<span>/mês</span></div>
+            <ul>
+                <li> 5 Usuários cadastrados</li>
+                <li> 50GB de Armazenamento</li>
+                <li> Suporte prioritário 24/7</li>
+                <li> Relatórios avançados</li>
+            </ul>
+            <a href="#" class="btn-plano">Escolher Standard</a>
+        </div>
+
+        <div class="card">
+            <h2>Premium</h2>
+            <div class="preco">R$ 99<span>/mês</span></div>
+            <ul>
+                <li> Usuários ilimitados</li>
+                <li> 500GB de Armazenamento</li>
+                <li> Gerente de conta exclusivo</li>
+                <li> Integração com API</li>
+            </ul>
+            <a href="#" class="btn-plano">Falar com Consultor</a>
+        </div>
+
+    </section>
+
+</body>
+</html>
