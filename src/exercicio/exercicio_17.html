@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercicio 17</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Exercicio 17 - Fileira de Imagens</title>
+	<link rel="stylesheet" href="exercicio_17.css">
 </head>
 <body>
-    <ul>
-        <li><strong>Objetivo:</strong> Criar uma fileira de imagens que se ajusta ao tamanho da tela.</li>
-        <li><strong>HTML:</strong> Uma section (container) contendo 5 divs quadradas com cores de fundo diferentes representando fotos.</li>
-        <li><strong>CSS:</strong> Usar display: flex no container, permitir que as fotos quebrem de linha (flex-wrap) e adicionar um espaçamento (gap) entre elas.</li>
-        <li><strong>Conceito chave:</strong> Flex-direction, flex-wrap e alinhamento de itens.</li>
-    </ul>
-   
+	<main>
+		<section class="photo-row" aria-label="Galeria de fotos">
+			<div class="photo" style="background-image: linear-gradient(135deg,#f97316,#fb7185);" role="img" aria-label="Foto 1"></div>
+			<div class="photo" style="background-image: linear-gradient(135deg,#06b6d4,#3b82f6);" role="img" aria-label="Foto 2"></div>
+			<div class="photo" style="background-image: linear-gradient(135deg,#34d399,#10b981);" role="img" aria-label="Foto 3"></div>
+			<div class="photo" style="background-image: linear-gradient(135deg,#a78bfa,#60a5fa);" role="img" aria-label="Foto 4"></div>
+			<div class="photo" style="background-image: linear-gradient(135deg,#fca5a5,#fda4af);" role="img" aria-label="Foto 5"></div>
+		</section>
+	</main>
 </body>
 </html>

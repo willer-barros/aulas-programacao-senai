@@ -1,16 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercicio 20</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Exercicio 20 - Planos</title>
+	<link rel="stylesheet" href="exercicio_20.css">
 </head>
 <body>
-    <ul>
-    <li><strong>Objetivo:</strong> Criar três colunas comparativas de planos.</li>
-    <li><strong>HTML:</strong> Três divs principais (cards), cada uma com o nome do plano, uma lista (ul) de benefícios e o valor.</li>
-    <li><strong>CSS:</strong> Usar display: grid com três colunas de tamanhos iguais. Adicionar um destaque (como uma cor de borda diferente) apenas no card central.</li>
-    <li><strong>Conceito chave:</strong> Grid-template-columns, gap e seletores específicos de grid.</li>
-</ul>
+	<main class="wrap">
+		<header class="plans-header">
+			<h1>Escolha o seu plano</h1>
+			<p class="subtitle">Compare os benefícios e escolha o melhor para você.</p>
+		</header>
+
+		<section class="plans" aria-label="Comparação de planos">
+			<article class="plan">
+				<h3 class="plan-name">Essencial</h3>
+				<ul class="benefits">
+					<li>1 usuário</li>
+					<li>Suporte por e-mail</li>
+					<li>Relatórios básicos</li>
+				</ul>
+				<div class="price">R$ 19/mês</div>
+				<button class="plan-cta">Assinar</button>
+			</article>
+
+			<article class="plan featured" aria-hidden="false">
+				<h3 class="plan-name">Profissional</h3>
+				<ul class="benefits">
+					<li>Até 5 usuários</li>
+					<li>Suporte prioritário</li>
+					<li>Relatórios avançados</li>
+				</ul>
+				<div class="price">R$ 49/mês</div>
+				<button class="plan-cta">Assinar</button>
+			</article>
+
+			<article class="plan">
+				<h3 class="plan-name">Empresarial</h3>
+				<ul class="benefits">
+					<li>Usuários ilimitados</li>
+					<li>Suporte dedicado</li>
+					<li>Integrações premium</li>
+				</ul>
+				<div class="price">R$ 99/mês</div>
+				<button class="plan-cta">Assinar</button>
+			</article>
+		</section>
+	</main>
 </body>
 </html>

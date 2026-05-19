@@ -1,0 +1,102 @@
+:root{
+	--max-width: 680px;
+	--accent: #2563eb;
+	--accent-opaque: rgba(37,99,235,0.12);
+	--bg: #f8fafc;
+	--card: #ffffff;
+	--muted: #6b7280;
+}
+
+*{box-sizing:border-box;}
+
+body{
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+	background: var(--bg);
+	margin:0;
+	padding:32px;
+	display:flex;
+	justify-content:center;
+}
+
+/* Container do formulário */
+.container{
+	width:100%;
+	max-width:var(--max-width);
+}
+
+/* Cabeçalho */
+.container header h1{ margin:0 0 6px; font-size:1.25rem; }
+.lead{ margin:0 0 18px; color:var(--muted); }
+
+/* Formulário */
+.message-form{
+	background:var(--card);
+	padding:20px;
+	border-radius:10px;
+	box-shadow:0 8px 24px rgba(2,6,23,0.05);
+	border:1px solid rgba(2,6,23,0.04);
+}
+
+/* Grupo de campo */
+.form-group{ margin-bottom:14px; }
+
+/* Labels */
+.form-group label{
+	display:block;
+	margin-bottom:6px;
+	font-weight:600;
+	font-size:0.95rem;
+	color:#0f172a;
+}
+
+/* Inputs e textarea: sem borda visível por padrão, porém mantendo espaço (transição suave) */
+.message-form input,
+.message-form textarea{
+	width:100%;
+	padding:10px 12px;
+	border-radius:8px;
+	border:1px solid transparent; /* mantém tamanho sem borda visível */
+	background:#fbfdff;
+	font-size:0.98rem;
+	color:#0f172a;
+	resize:vertical;
+	transition: border-color 180ms ease, box-shadow 180ms ease, transform 120ms ease;
+	outline: none;
+}
+
+/* Focus: borda colorida + leve halo */
+.message-form input:focus,
+.message-form textarea:focus{
+	border-color: var(--accent);
+	box-shadow: 0 0 0 6px var(--accent-opaque);
+	transform: translateY(-1px);
+}
+
+/* Botão */
+.btn-submit{
+	display:inline-block;
+	background:var(--accent);
+	color:#fff;
+	border:none;
+	padding:10px 16px;
+	font-weight:600;
+	border-radius:8px;
+	cursor:pointer;
+	transition: background-color 160ms ease, transform 120ms ease, box-shadow 160ms ease;
+}
+
+/* Hover e active do botão */
+.btn-submit:hover{
+	background:#1e40af;
+	transform: translateY(-2px);
+	box-shadow: 0 8px 20px rgba(30,64,175,0.12);
+}
+.btn-submit:active{
+	transform: translateY(0);
+}
+
+/* Pequenos ajustes responsivos */
+@media (max-width:480px){
+	body{ padding:20px; }
+	.message-form{ padding:16px; }
+}

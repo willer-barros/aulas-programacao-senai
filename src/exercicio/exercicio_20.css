@@ -1,0 +1,86 @@
+:root{
+	--max-width:980px;
+	--accent:#0ea5e9;
+	--bg:#f8fafc;
+	--card:#ffffff;
+	--muted:#6b7280;
+}
+
+*{box-sizing:border-box;}
+
+body{
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+	background:var(--bg);
+	margin:0;
+	padding:32px;
+	display:flex;
+	justify-content:center;
+}
+
+/* Wrapper */
+.wrap{
+	width:100%;
+	max-width:var(--max-width);
+}
+
+/* Header */
+.plans-header{ text-align:center; margin-bottom:18px; }
+.plans-header .subtitle{ color:var(--muted); margin-top:6px; }
+
+/* Grid de planos */
+.plans{
+	display:grid;
+	grid-template-columns:repeat(3, 1fr); /* três colunas iguais */
+	gap:20px;
+	align-items:start;
+}
+
+/* Card base */
+.plan{
+	background:var(--card);
+	padding:20px;
+	border-radius:10px;
+	border:1px solid rgba(15,23,42,0.06);
+	box-shadow:0 8px 20px rgba(2,6,23,0.04);
+	text-align:center;
+	transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+/* Destaque apenas no card central */
+.plan.featured{
+	border-color: var(--accent);
+	box-shadow: 0 18px 40px rgba(14,165,233,0.12);
+	transform: translateY(-6px);
+	z-index:2;
+}
+
+/* Conteúdo do card */
+.plan-name{ margin:0 0 10px; font-size:1.1rem; }
+.benefits{ list-style:none; padding:0; margin:0 0 14px; color:var(--muted); }
+.benefits li{ padding:6px 0; border-bottom:1px dashed rgba(0,0,0,0.04); }
+.price{ font-weight:700; font-size:1.25rem; margin-bottom:12px; color:#0f172a; }
+
+/* Botão */
+.plan-cta{
+	background:var(--accent);
+	color:#fff;
+	border:none;
+	padding:10px 14px;
+	border-radius:8px;
+	cursor:pointer;
+	font-weight:600;
+	transition: background-color 140ms ease, transform 120ms ease, box-shadow 140ms ease;
+}
+.plan-cta:hover{ background:#0284c7; transform: translateY(-2px); box-shadow:0 8px 20px rgba(2,132,199,0.12); }
+
+/* Hover sutil em cards não destacados */
+.plan:not(.featured):hover{ transform: translateY(-4px); box-shadow:0 10px 28px rgba(2,6,23,0.06); }
+
+/* Responsividade */
+@media (max-width:880px){
+	.plans{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width:520px){
+	.plans{ grid-template-columns: 1fr; }
+	.plan.featured{ transform:none; } /* evitar sobreposição em coluna única */
+}

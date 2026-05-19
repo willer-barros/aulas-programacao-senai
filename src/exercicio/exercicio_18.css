@@ -1,0 +1,77 @@
+:root {
+	--max-width: 720px;
+	--page-padding: 24px;
+	--bg: #f7fafc;
+	--card-bg: #ffffff;
+	--muted: #6b7280;
+}
+
+* { box-sizing: border-box; }
+
+body {
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+	background: var(--bg);
+	color: #111827;
+	margin: 0;
+	padding: var(--page-padding);
+	display: flex;
+	justify-content: center;
+}
+
+/* Container de conteúdo */
+.content {
+	background: var(--card-bg);
+	max-width: var(--max-width);
+	width: 100%;
+	margin: 20px 0;
+	padding: 28px;
+	border-radius: 8px;
+	box-shadow: 0 6px 20px rgba(17,24,39,0.06);
+	border: 1px solid rgba(15,23,42,0.04);
+	line-height: 1.65; /* melhora leitura */
+	font-size: 1rem;
+}
+
+/* Header e footer alinhados ao mesmo max-width */
+.site-header, .site-footer {
+	max-width: var(--max-width);
+	width: 100%;
+	margin: 0;
+	padding: 8px 0;
+	text-align: center;
+}
+
+.site-header h1 {
+	margin: 12px 0 4px;
+	font-size: 1.5rem;
+}
+
+.subtitle {
+	margin: 0;
+	color: var(--muted);
+	font-size: 0.95rem;
+}
+
+/* Títulos internos */
+.content h2 {
+	font-size: 1.15rem;
+	margin-top: 18px;
+	margin-bottom: 8px;
+	color: #0f172a;
+}
+
+/* Parágrafos */
+.content p {
+	margin: 0 0 12px 0;
+	color: #1f2937;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 520px) {
+	.content {
+		padding: 20px;
+		font-size: 0.98rem;
+		line-height: 1.6;
+	}
+	.site-header h1 { font-size: 1.25rem; }
+}
