@@ -1,0 +1,227 @@
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-h);
+  margin-bottom: 32px;
+  letter-spacing: -0.5px;
+}
+
+.page-title span {
+  color: var(--accent);
+}
+
+/* Dashboard */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: var(--bg);
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.card h2 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  margin: 0;
+}
+
+/* Form */
+.formulario {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+  background: var(--bg);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  flex-wrap: wrap;
+}
+
+.formulario input,
+.formulario select {
+  flex: 1;
+  min-width: 140px;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--text-h);
+  background: var(--bg);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.formulario input:focus,
+.formulario select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+.btn-submit {
+  padding: 10px 20px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn-submit:hover { opacity: 0.85; }
+.btn-submit:active { transform: scale(0.97); }
+
+.btn-cancel {
+  padding: 10px 16px;
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-cancel:hover { background: var(--code-bg); }
+
+/* Course list */
+.lista {
+  display: grid;
+  gap: 12px;
+}
+
+.curso {
+  background: var(--bg);
+  padding: 18px 24px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.15s;
+}
+
+.curso:hover { transform: translateY(-1px); }
+
+.curso-info { flex: 1; }
+
+.curso-info h3 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.curso-info p {
+  font-size: 0.85rem;
+  color: var(--text);
+  margin: 0;
+}
+
+/* Category badges */
+.categoria-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.cat-frontend { background: #dbeafe; color: #1d4ed8; }
+.cat-backend  { background: #dcfce7; color: #15803d; }
+.cat-mobile   { background: #fef3c7; color: #b45309; }
+.cat-db       { background: #f3e8ff; color: #7e22ce; }
+
+@media (prefers-color-scheme: dark) {
+  .cat-frontend { background: rgba(29, 78, 216, 0.2);  color: #93c5fd; }
+  .cat-backend  { background: rgba(21, 128, 61, 0.2);  color: #86efac; }
+  .cat-mobile   { background: rgba(180, 83, 9, 0.2);   color: #fcd34d; }
+  .cat-db       { background: rgba(126, 34, 206, 0.2); color: #d8b4fe; }
+}
+
+/* Action buttons */
+.curso-acoes { display: flex; gap: 8px; }
+
+.btn-editar {
+  padding: 7px 14px;
+  border: 1.5px solid var(--accent-border);
+  background: var(--accent-bg);
+  color: var(--accent);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-editar:hover { opacity: 0.75; }
+
+.btn-excluir {
+  padding: 7px 14px;
+  border: 1.5px solid #fca5a5;
+  background: #fee2e2;
+  color: #dc2626;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-excluir:hover { background: #fecaca; }
+
+@media (prefers-color-scheme: dark) {
+  .btn-excluir {
+    background: rgba(220, 38, 38, 0.15);
+    border-color: rgba(220, 38, 38, 0.4);
+    color: #f87171;
+  }
+  .btn-excluir:hover { background: rgba(220, 38, 38, 0.25); }
+}
+
+@media (max-width: 640px) {
+  .dashboard { grid-template-columns: 1fr; }
+
+  .curso {
+    flex-wrap: wrap;
+  }
+
+  .curso-acoes { width: 100%; }
+}
