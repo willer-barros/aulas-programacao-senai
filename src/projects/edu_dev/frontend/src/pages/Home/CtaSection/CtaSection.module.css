@@ -1,0 +1,71 @@
+/* ── CtaSection.module.css ───────────────────────── */
+
+.section {
+  padding-block: var(--space-section);
+}
+
+/* Band */
+.band {
+  position: relative;
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius-md);
+  padding: clamp(40px, 6vw, 80px) clamp(32px, 6vw, 80px);
+  background-color: var(--bg-surface);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity   var(--duration-md) var(--ease-out),
+    transform var(--duration-md) var(--ease-out);
+}
+
+.band.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Dot grid background */
+.dotGrid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    var(--border-hover) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Content — left aligned */
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 560px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.heading {
+  font-size: clamp(24px, 3.5vw, 42px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--text-primary);
+}
+
+.sub {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}

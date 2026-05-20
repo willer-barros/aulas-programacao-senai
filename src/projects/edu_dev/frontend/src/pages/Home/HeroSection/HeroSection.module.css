@@ -1,0 +1,229 @@
+/* ── HeroSection.module.css ──────────────────────── */
+
+@keyframes feedScroll {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Section */
+.section {
+  padding-top: calc(56px + clamp(56px, 10vw, 100px));
+  padding-bottom: var(--space-section);
+}
+
+/* Split grid */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: center;
+}
+
+/* Left content */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Eyebrow */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.eyebrowDot {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent);
+}
+
+/* Headline — reveal animation */
+.headline {
+  font-size: clamp(40px, 6vw, 80px);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity   var(--duration-md) var(--ease-out),
+    transform var(--duration-md) var(--ease-out);
+}
+
+.headline.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.headlineEm {
+  font-style: normal;
+  color: var(--accent);
+}
+
+/* Sub — reveal animation */
+.sub {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 440px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity   var(--duration-md) var(--ease-out),
+    transform var(--duration-md) var(--ease-out);
+}
+
+.sub.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CTA — reveal animation */
+.cta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity   var(--duration-md) var(--ease-out),
+    transform var(--duration-md) var(--ease-out);
+}
+
+.cta.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Activity Feed card */
+.feedCard {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  animation: fadeIn 0.6s var(--ease-out) 0.3s both;
+}
+
+.feedHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.feedLive {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--level-init);
+  box-shadow: 0 0 6px var(--level-init);
+}
+
+.feedTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+}
+
+/* Scrolling mask */
+.feedMask {
+  height: 288px;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+}
+
+.feedList {
+  animation: feedScroll 18s linear infinite;
+}
+
+.feedItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.feedAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-hover);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.feedText {
+  flex: 1;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.feedName   { color: var(--text-primary); font-weight: 600; }
+.feedAction { color: var(--text-secondary); }
+.feedCourse { color: var(--accent); font-weight: 500; }
+
+.feedTime {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feedCard {
+    display: none;
+  }
+}

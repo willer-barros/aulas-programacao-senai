@@ -1,0 +1,52 @@
+/* ── src/styles/tokens.css ────────────────────────── */
+
+:root {
+  /* Backgrounds */
+  --bg-base:        #0A0A0F;
+  --bg-surface:     #111118;
+  --bg-elevated:    #1A1A24;
+
+  /* Borders */
+  --border-subtle:  rgba(255, 255, 255, 0.06);
+  --border-hover:   rgba(255, 255, 255, 0.12);
+
+  /* Accent */
+  --accent:         #6366F1;
+  --accent-glow:    rgba(99, 102, 241, 0.12);
+  --accent-dim:     rgba(99, 102, 241, 0.18);
+
+  /* Level indicators */
+  --level-init:     #10b981;
+  --level-inter:    #8b5cf6;
+  --level-adv:      #f59e0b;
+
+  /* Text */
+  --text-primary:   #F1F1F5;
+  --text-secondary: #71717A;
+  --text-muted:     #3F3F46;
+
+  /* Shadows */
+  --shadow-md:      0 4px 24px rgba(0, 0, 0, 0.5);
+  --shadow-glow:    0 0 48px var(--accent-glow);
+
+  /* Easing */
+  --ease-out:       cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-sm:    180ms;
+  --duration-md:    320ms;
+
+  /* Shape */
+  --radius-sm:      8px;
+  --radius-md:      16px;
+
+  /* Layout */
+  --space-section:  clamp(64px, 10vw, 120px);
+  --container-max:  1120px;
+  --container-pad:  clamp(16px, 5vw, 48px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-sm: 0ms;
+    --duration-md: 0ms;
+  }
+}

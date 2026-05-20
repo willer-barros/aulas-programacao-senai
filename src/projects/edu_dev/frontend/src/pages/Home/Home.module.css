@@ -1,0 +1,50 @@
+/* ── Home.module.css ─────────────────────────────── */
+
+.main {
+  min-height: 100vh;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+  padding-block: 28px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.footerLogo {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+  color: var(--text-primary);
+}
+
+.footerAccent {
+  color: var(--accent);
+}
+
+.footerLinks {
+  display: flex;
+  gap: 20px;
+}
+
+.footerLinks a {
+  font-size: 13px;
+  color: var(--text-secondary);
+  transition: color var(--duration-sm) var(--ease-out);
+}
+
+.footerLinks a:hover {
+  color: var(--text-primary);
+}
+
+.footerCopy {
+  font-size: 12px;
+  color: var(--text-muted);
+}

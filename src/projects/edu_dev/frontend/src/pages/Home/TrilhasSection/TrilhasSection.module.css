@@ -1,0 +1,373 @@
+/* ── TrilhasSection.module.css ───────────────────── */
+
+.section {
+  padding-block: var(--space-section);
+}
+
+/* Header — split: title left, button right */
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.heading {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  color: var(--text-primary);
+}
+
+/* List */
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+/* Card — uses --trilha-cor CSS variable */
+.item {
+  position: relative;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity          var(--duration-md) var(--ease-out),
+    transform        var(--duration-md) var(--ease-out),
+    border-color     var(--duration-sm) var(--ease-out),
+    background-color var(--duration-sm) var(--ease-out);
+}
+
+.item.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.item:hover {
+  border-color: var(--border-hover);
+  background-color: var(--bg-elevated);
+}
+
+/* Top accent bar */
+.accentBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--trilha-cor, var(--accent));
+}
+
+/* Large decorative number in background */
+.numBg {
+  position: absolute;
+  right: 20px;
+  bottom: -12px;
+  font-size: 96px;
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  color: var(--text-primary);
+  opacity: 0.03;
+  user-select: none;
+  pointer-events: none;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+/* Card body */
+.cardBody {
+  position: relative;
+  padding: 20px 24px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Top row: small index + actions */
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.numLabel {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--trilha-cor, var(--accent));
+  font-variant-numeric: tabular-nums;
+}
+
+/* Title */
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  line-height: 1.35;
+}
+
+/* Meta pills */
+.pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background-color: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.pillDot {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--trilha-cor, var(--accent));
+  opacity: 0.7;
+}
+
+/* Row action buttons */
+.itemActions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity var(--duration-sm) var(--ease-out);
+}
+
+.item:hover .itemActions,
+.item:focus-within .itemActions {
+  opacity: 1;
+}
+
+.editBtn {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background-color: transparent;
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition:
+    color            var(--duration-sm) var(--ease-out),
+    background-color var(--duration-sm) var(--ease-out),
+    border-color     var(--duration-sm) var(--ease-out);
+}
+
+.editBtn:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-elevated);
+  border-color: var(--border-hover);
+}
+
+.deleteBtn {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background-color: transparent;
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition:
+    color            var(--duration-sm) var(--ease-out),
+    background-color var(--duration-sm) var(--ease-out),
+    border-color     var(--duration-sm) var(--ease-out);
+}
+
+.deleteBtn:hover {
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.3);
+  background-color: rgba(239, 68, 68, 0.06);
+}
+
+/* Second-click confirmation state */
+.deleteConfirm {
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.4);
+  background-color: rgba(239, 68, 68, 0.08);
+}
+
+/* Empty state */
+.empty {
+  padding-block: 40px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.emptyLink {
+  color: var(--accent);
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: inherit;
+  padding: 0;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color var(--duration-sm) var(--ease-out);
+}
+
+.emptyLink:hover {
+  text-decoration-color: var(--accent);
+}
+
+/* ── Form (inside Modal) ─────────────────────────── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.fieldRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text-primary);
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  outline: none;
+  transition:
+    border-color var(--duration-sm) var(--ease-out),
+    box-shadow   var(--duration-sm) var(--ease-out);
+}
+
+.input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+.inputError {
+  border-color: #ef4444;
+}
+
+.inputError:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
+.fieldError {
+  font-size: 12px;
+  color: #ef4444;
+}
+
+/* Color picker row */
+.colorRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.colorInput {
+  width: 44px;
+  height: 44px;
+  padding: 3px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-hover);
+  background-color: var(--bg-elevated);
+  cursor: pointer;
+}
+
+.colorHex {
+  font-size: 13px;
+  font-family: 'Fira Code', monospace;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+
+/* Server error */
+.serverError {
+  font-size: 13px;
+  color: #ef4444;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Form actions */
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .list {
+    grid-template-columns: 1fr;
+  }
+
+  .itemActions {
+    opacity: 1;
+  }
+
+  .fieldRow {
+    grid-template-columns: 1fr;
+  }
+}

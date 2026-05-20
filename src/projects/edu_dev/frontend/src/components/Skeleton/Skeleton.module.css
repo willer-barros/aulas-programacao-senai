@@ -1,0 +1,61 @@
+/* ── Skeleton.module.css ─────────────────────────── */
+
+@keyframes shimmer {
+  from { background-position: -400px 0; }
+  to   { background-position:  400px 0; }
+}
+
+.skeleton {
+  display: block;
+  width: var(--w, 100%);
+  height: var(--h, 20px);
+  border-radius: var(--r, 6px);
+  background: linear-gradient(
+    90deg,
+    var(--bg-elevated) 25%,
+    var(--bg-surface)  50%,
+    var(--bg-elevated) 75%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+/* Curso list skeleton */
+.cursosList {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background-color: var(--border-subtle);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.cursosItem {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 20px 24px;
+  background-color: var(--bg-surface);
+}
+
+/* Trilha list skeleton */
+.trilhasList {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background-color: var(--border-subtle);
+}
+
+.trilhasItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 28px 0;
+  background-color: var(--bg-base);
+}
+
+.trilhasItemText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

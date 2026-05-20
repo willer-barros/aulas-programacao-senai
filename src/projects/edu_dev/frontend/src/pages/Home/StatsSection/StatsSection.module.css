@@ -1,0 +1,63 @@
+/* ── StatsSection.module.css ─────────────────────── */
+
+.section {
+  padding-block: 48px;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 140px;
+}
+
+.statNum {
+  display: block;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+/* Vertical divider between items */
+.divider {
+  position: absolute;
+  right: -12px;
+  top: 4px;
+  bottom: 4px;
+  width: 1px;
+  background-color: var(--border-subtle);
+}
+
+@media (max-width: 640px) {
+  .list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .divider {
+    display: none;
+  }
+}

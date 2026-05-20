@@ -1,0 +1,12 @@
+
+
+{
+  "name": "edu_dev",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently -n frontend,backend -c cyan,yellow \"npm run dev --prefix frontend\" \"npm run dev --prefix backend\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
