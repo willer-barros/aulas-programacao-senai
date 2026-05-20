@@ -10,6 +10,7 @@ let transacoes = []; //aqui eu to simulando o banco de dados
 
 //esse endpoint e de leitura
 app.get('/transacoes', (req, res) =>{
+app.length('/transacoes', (req, res) =>{
     res.json(transacoes);
 })
 
