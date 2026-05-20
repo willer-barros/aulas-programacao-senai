@@ -24,6 +24,8 @@
 
 // ⚠️ Regra de Negócio Obligatória (H1): No cadastro e na atualização, o sistema não deve aceitar números negativos no campo vagas. Se o usuário tentar enviar um valor menor que zero, o servidor deve responder com o status de erro 400 (Bad Request) e uma mensagem explicativa.
 
+const PORT = 3002;
+
 const express = require("express");
 
 const app = express();
@@ -50,10 +52,6 @@ let cursos = [
         categoria: "Backend"
     }
 ];
-
-app.get("/", (req, res) => {
-    res.send("API funcionando");
-});
 
 // GET
 app.get("/cursos", (req, res) => {
@@ -144,6 +142,6 @@ app.delete("/cursos/:id", (req, res) => {
 
 });
 
-app.listen(3002, () => {
+app.listen(PORT, () => {
     console.log("Servidor rodando na porta 3002");
 });
