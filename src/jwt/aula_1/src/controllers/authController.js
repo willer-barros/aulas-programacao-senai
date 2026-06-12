@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken"
-import jwtConfig from "../config/jwt"
+import jwtConfig from "../config/jwt.js"
 
 const utilizadores = [
     { id: 42, email: "aluno@dev.com", senha: "123", perfil: "aluno"}
