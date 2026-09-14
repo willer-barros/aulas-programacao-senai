@@ -7,15 +7,15 @@ Este repositório é dedicado ao armazenamento de atividades de lógica de progr
 * **Ambiente:** Zorin OS (Linux)
 * **Linguagem:** JavaScript (ES6+)
 * **Backend:** Node.js & Express
-* **Inteligência Artificial:** Ollama com DeepSeek-Coder:1.3b (Local)
 * **Versionamento:** Git & GitHub
 
 ---
 
 ## 📂 Estrutura do Repositório
 
-* `/atividades-logica`: Exercícios básicos de lógica, loops e arrays.
-* `/api-alunos`: CRUD simples desenvolvido em Node.js para gestão de estudantes.
+* `/backend/exercicios`: Exercícios básicos de lógica, loops e arrays.
+
+* `/frontend/exercicios`: Exercícios básicos de estilização com html, css, JavaScript e componentes.
 ---
 
 ## 🛠️ Como rodar o projeto localmente
