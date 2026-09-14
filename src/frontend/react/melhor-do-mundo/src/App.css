@@ -1,0 +1,74 @@
+body {
+  background: #0f1115;
+  color: #fff;
+  font-family: system-ui, sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 32px;
+}
+
+.lista-jogadores {
+  list-style: none;
+  padding: 0;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.jogador-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: #1c1f26;
+  border: 1px solid #2a2e38;
+  border-radius: 12px;
+  transition: border-color 0.2s;
+}
+
+.jogador-item:hover {
+  border-color: #3d84f7;
+}
+
+.nome {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.votos {
+  margin-left: auto;
+  color: #9aa1ac;
+  font-size: 0.9rem;
+}
+
+.jogador-item button {
+  background: #3d84f7;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.jogador-item button:hover {
+  background: #2f6fd8;
+}
+
+.jogador-item button:active {
+  transform: scale(0.96);
+}
+
+.lider {
+  border-color: #f7c948;
+  box-shadow: 0 0 0 1px #f7c948;
+}
