@@ -7,6 +7,16 @@ const PORT = 3000;
 
 app.use(express.json());
 
+// Autenticação: exige uma API key válida (definida em SECRET_KEY_APP) em todas as rotas.
+app.use((req, res, next) => {
+  const apiKey = req.header('x-api-key');
+  const expectedKey = process.env.SECRET_KEY_APP;
+  if (!expectedKey || !apiKey || apiKey !== expectedKey) {
+    return res.status(401).json({ error: 'Não autorizado.' });
+  }
+  return next();
+});
+
 app.post('/pokemons', async (req, res) => {
   const { numero, nome, tipo, nivel } = req.body;
   try {
