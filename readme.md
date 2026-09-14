@@ -1,7 +1,7 @@
 # REPOSITÓRIO PARA DESENVOLVIMENTO DE SISTEMAS
 ### Exercícios & Projetos Web
 
-Este repositório é dedicado ao armazenamento de atividades de lógica de programação, exercícios de backend com Node.js e projetos de interface web (Front-end Vanilla).
+Este repositório é dedicado ao armazenamento de atividades de lógica de programação, exercícios de backend com Node.js e projetos de interface web (Front-end com vanilla e React).
 
 ## 📌 Tecnologias Utilizadas
 * **Ambiente:** Zorin OS (Linux)
@@ -26,3 +26,9 @@ Este repositório é dedicado ao armazenamento de atividades de lógica de progr
 
     Linux
    clonar usando SSH: git clone https://github.com/willer-barros/aulas-programacao-senai.git
+
+## Como entregar as atividades
+
+1. Criar fork do repositório
+2. Procurar a pasta da sua turma
+3. Colocar a sua solução dentro da pasta /respostas/solucao.js
