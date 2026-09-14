@@ -1,7 +1,6 @@
-# Aula de Docker
+# Aula de Docker 🐳
  
-## Objetivo da Aula
-Ao final desta aula, o aluno será capaz de:
+## Objetivos
 - Entender o que é Docker
 - Compreender a diferença entre imagens e containers
 - Criar e executar containers
@@ -10,7 +9,7 @@ Ao final desta aula, o aluno será capaz de:
 - Executar aplicações em containers
 
 # O que é Docker?
-Docker é uma plataforma que permite empacotar aplicações e suas dependências em ambientes isolados chamados **containers**.
+Docker é uma plataforma que permite empacotar📦 aplicações e suas dependências em ambientes isolados chamados **containers**.
 Com Docker, uma aplicação pode ser executada em qualquer computador que possua Docker instalado, sem a necessidade de configurar manualmente bibliotecas, frameworks ou dependências.
 
 ## Problema sem Docker
@@ -26,6 +25,7 @@ Docker cria um ambiente padronizado para a aplicação.
 
 
 # Proposta de ensino
+
 ## Módulo 1 — Fundamentos e Ambiente (4h)
 ### Objetivos
 - Compreender o conceito de containers
