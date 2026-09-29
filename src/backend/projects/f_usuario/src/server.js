@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import {prisma} from "./lib/prisma.ts"
 
 const app = express();
 app.use(express.json());
@@ -12,7 +13,7 @@ app.get("/users", async (req, res) => {
     const user = await prisma.user.findMany();
     res.json(user);
   } catch (error) {
-    res.status(500).json({ error: "Error getting users" });
+    res.status(500).json({ error: "Error não foi possivel ler todos usuarios" });
   }
 });
 
