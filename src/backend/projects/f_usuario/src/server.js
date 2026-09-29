@@ -31,7 +31,7 @@ app.post("/users", async (req, res) => {
 app.put("/users/:id", async (req, res) => {
   try {
     const user = await prisma.user.update({
-      where: { id: req.params.id },
+      where: { id: Number(req.params.id) },
       data: req.body,
     });
     res.json(user);
@@ -43,7 +43,7 @@ app.put("/users/:id", async (req, res) => {
 app.delete("/users/:id", async (req, res) => {
   try {
     const user = await prisma.user.delete({
-      where: { id: req.params.id },
+      where: { id: Number(req.params.id) },
     });
     res.json(user);
   } catch (error) {
@@ -52,5 +52,5 @@ app.delete("/users/:id", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`API rodando...`);
 });
