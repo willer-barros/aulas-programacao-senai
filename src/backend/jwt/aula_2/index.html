@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema de Autenticação com Cookies</title>
+</head>
+<body>
+
+  <h1>Login de Cliente</h1>
+
+  <!-- FORMULÁRIO DE LOGIN -->
+  <form id="formLogin">
+    <div>
+      <label>E-mail:</label>
+      <input type="email" id="email" required value="cliente@email.com">
+    </div>
+    <br>
+    <div>
+      <label>Senha:</label>
+      <input type="password" id="senha" required value="123456">
+    </div>
+    <br>
+    <button type="submit">Entrar</button>
+  </form>
+
+  <hr>
+
+  <h2>Ações do Sistema</h2>
+  <!-- Botão para testar a rota protegida enviando o Cookie automaticamente -->
+  <button id="btnPerfil">Buscar Perfil Protegido</button>
+  <button id="btnLogout">Sair (Logout)</button>
+
+  <h3>Resposta do Backend:</h3>
+  <pre id="resposta" style="background: #f0f0f0; padding: 10px;"></pre>
+
+  <script>
+    const API_URL = 'http://localhost:3000';
+    const campoResposta = document.getElementById('resposta');
+
+    // ==========================================================
+    // 1. FAZER LOGIN (Recebe o cookie HttpOnly do backend)
+    // ==========================================================
+    document.getElementById('formLogin').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+
+      try {
+        const res = await fetch(`${API_URL}/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          // ⚠️ Importante para o navegador aceitar e gravar o cookie enviado no Set-Cookie
+          credentials: 'include', 
+          body: JSON.stringify({ email, senha })
+        });
+
+        const dados = await res.json();
+        campoResposta.textContent = JSON.stringify(dados, null, 2);
+      } catch (error) {
+        campoResposta.textContent = 'Erro ao conectar com o servidor.';
+      }
+    });
+
+    // ==========================================================
+    // 2. BUSCAR PERFIL (O navegador envia o cookie AUTOMATICAMENTE)
+    // ==========================================================
+    document.getElementById('btnPerfil').addEventListener('click', async () => {
+      try {
+        const res = await fetch(`${API_URL}/perfil`, {
+          method: 'GET',
+          // ⚠️ CHAVE DO SUCESSO: 'include' faz o JS anexar o cookie sem você ver ou manipular o token!
+          credentials: 'include' 
+        });
+
+        const dados = await res.json();
+        campoResposta.textContent = JSON.stringify(dados, null, 2);
+      } catch (error) {
+        campoResposta.textContent = 'Erro ao buscar perfil.';
+      }
+    });
+
+    // ==========================================================
+    // 3. LOGOUT (Pede para o backend limpar o cookie)
+    // ==========================================================
+    document.getElementById('btnLogout').addEventListener('click', async () => {
+      try {
+        const res = await fetch(`${API_URL}/logout`, {
+          method: 'POST',
+          credentials: 'include'
+        });
+
+        const dados = await res.json();
+        campoResposta.textContent = JSON.stringify(dados, null, 2);
+      } catch (error) {
+        campoResposta.textContent = 'Erro ao fazer logout.';
+      }
+    });
+  </script>
+
+</body>
+</html>
