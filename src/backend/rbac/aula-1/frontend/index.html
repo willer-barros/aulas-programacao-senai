@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema de Gestão — Fullstack RBAC</title>
+</head>
+<body style="font-family: sans-serif; padding: 20px;">
+
+  <h1>Sistema de Autenticação & RBAC</h1>
+
+  <!-- FORMULÁRIO DE LOGIN -->
+  <section id="secaoLogin">
+    <h2>Login</h2>
+    <form id="formLogin">
+      <p>E-mail: <input type="email" id="loginEmail" required value="admin@clinica.com"></p>
+      <p>Senha: <input type="password" id="loginSenha" required value="123456"></p>
+      <button type="submit">Entrar</button>
+    </form>
+  </section>
+
+  <hr>
+
+  <!-- PAINEL PRINCIPAL (SÓ EXIBIDO APÓS AUTENTICAÇÃO) -->
+  <section id="painelUsuario" style="display: none;">
+    <h2>Painel Principal</h2>
+    <p>Usuário Logado: <strong id="nomeUsuario">---</strong> (<span id="cargoUsuario">---</span>)</p>
+    
+    <button id="btnPerfil">Consultar Meu Perfil</button>
+    <button id="btnAreaAdmin">Acessar Área do Admin (Restrito)</button>
+    <button id="btnLogout">Sair (Logout)</button>
+
+    <h3>Resultado:</h3>
+    <pre id="saida" style="background: #eee; padding: 10px; border: 1px solid #ccc;"></pre>
+  </section>
+
+  <script>
+    const API_URL = 'http://localhost:3000/api';
+    const saida = document.getElementById('saida');
+
+    // 1. Fazer Login
+    document.getElementById('formLogin').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const senha = document.getElementById('loginSenha').value;
+
+      const res = await fetch(`${API_URL}/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include', // OBRIGATÓRIO: Anexa e grava o Cookie HttpOnly
+        body: JSON.stringify({ email, senha })
+      });
+
+      const dados = await res.json();
+      saida.textContent = JSON.stringify(dados, null, 2);
+
+      if (res.ok) {
+        document.getElementById('nomeUsuario').textContent = dados.usuario.nome;
+        document.getElementById('cargoUsuario').textContent = dados.usuario.cargo;
+        document.getElementById('secaoLogin').style.display = 'none';
+        document.getElementById('painelUsuario').style.display = 'block';
+      }
+    });
+
+    // 2. Acessar Rota Protegida de Perfil
+    document.getElementById('btnPerfil').addEventListener('click', async () => {
+      const res = await fetch(`${API_URL}/meu-perfil`, {
+        method: 'GET',
+        credentials: 'include' // Envia o cookie automaticamente
+      });
+      const dados = await res.json();
+      saida.textContent = JSON.stringify(dados, null, 2);
+    });
+
+    // 3. Acessar Rota Restrita do Admin (Testa RBAC)
+    document.getElementById('btnAreaAdmin').addEventListener('click', async () => {
+      const res = await fetch(`${API_URL}/admin/clientes`, {
+        method: 'GET',
+        credentials: 'include'
+      });
+      const dados = await res.json();
+      saida.textContent = JSON.stringify(dados, null, 2);
+    });
+
+    // 4. Logout
+    document.getElementById('btnLogout').addEventListener('click', async () => {
+      await fetch(`${API_URL}/logout`, {
+        method: 'POST',
+        credentials: 'include'
+      });
+      document.getElementById('secaoLogin').style.display = 'block';
+      document.getElementById('painelUsuario').style.display = 'none';
+      saida.textContent = 'Você saiu do sistema.';
+    });
+  </script>
+</body>
+</html>
