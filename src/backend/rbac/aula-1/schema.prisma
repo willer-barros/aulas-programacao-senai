@@ -1,0 +1,24 @@
+model Clientes{
+    id Int @id @default(autoincrement())
+    nome String
+    email String @unique
+    senha String
+    cpf String 
+    cargo String @default("CLIENTE")
+}
+
+//ou
+
+// enum Cargo{
+//     ADMIN
+//     CLIENTE
+// }
+
+// model Clientes{
+//     id Int @id @default(autoincrement())
+//     nome String
+//     email String @unique
+//     senha String
+//     cpf String 
+//     cargo Cargo @default(CLIENTE)
+// }
