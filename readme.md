@@ -1,10 +1,9 @@
 # REPOSITÓRIO PARA DESENVOLVIMENTO DE SISTEMAS
 ### Exercícios & Projetos Web
 
-Este repositório é dedicado ao armazenamento de atividades de lógica de programação, exercícios de backend com Node.js e projetos de interface web (Front-end com vanilla e React).
+Este repositório é dedicado à de atividades de lógica de programação, exercícios de backend com Node.js e projetos de interface web (Front-end com vanilla e React).
 
 ## 📌 Tecnologias Utilizadas
-* **Ambiente:** Zorin OS (Linux)
 * **Linguagem:** JavaScript (ES6+)
 * **Backend:** Node.js & Express
 * **Versionamento:** Git & GitHub
@@ -20,8 +19,8 @@ Este repositório é dedicado ao armazenamento de atividades de lógica de progr
 
 ## Como entregar as atividades
 
-1. Criar fork do repositório
-2. Procurar a pasta da sua turma
+1. Criar seu repositório
+2. Procurar atividades da sua turma
 3. Colocar a sua solução dentro da pasta /respostas/solucao.js
 
 ### Observação
